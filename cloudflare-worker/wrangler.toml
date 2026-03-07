@@ -1,0 +1,27 @@
+# Cloudflare Worker Configuration
+# Serves all user websites from R2 storage
+
+name = "webese-websites"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# R2 bucket binding
+[[r2_buckets]]
+binding = "WEBSITES"
+bucket_name = "user-websites"
+preview_bucket_name = "user-websites-preview"
+
+# Routes - handles all subdomains
+routes = [
+  { pattern = "*.webese.ai/*", zone_name = "webese.ai" },
+  { pattern = "webese.ai/*", zone_name = "webese.ai" }
+]
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+
+# Development configuration
+[env.dev]
+name = "webese-websites-dev"
+vars = { ENVIRONMENT = "development" }

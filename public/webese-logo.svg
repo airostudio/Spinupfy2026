@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <!-- Primary gradient: Purple to Cyan -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <!-- Accent gradient: Pink to Purple -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <!-- Icon gradient -->
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="40%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Sparkle gradient -->
+    <linearGradient id="sparkleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Friendly AI Robot Face in rounded square -->
+  <g transform="translate(8, 8)">
+    <!-- Background rounded square -->
+    <rect x="0" y="0" width="64" height="64" rx="16" fill="url(#iconGradient)"/>
+
+    <!-- Inner glow effect -->
+    <rect x="4" y="4" width="56" height="56" rx="12" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Robot face container -->
+    <g transform="translate(32, 32)">
+      <!-- Friendly eyes -->
+      <ellipse cx="-12" cy="-6" rx="6" ry="7" fill="white"/>
+      <ellipse cx="12" cy="-6" rx="6" ry="7" fill="white"/>
+
+      <!-- Eye pupils with sparkle -->
+      <circle cx="-10" cy="-5" r="3" fill="#1e1b4b"/>
+      <circle cx="14" cy="-5" r="3" fill="#1e1b4b"/>
+
+      <!-- Eye shine -->
+      <circle cx="-12" cy="-7" r="1.5" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="10" cy="-7" r="1.5" fill="rgba(255,255,255,0.8)"/>
+
+      <!-- Friendly smile -->
+      <path d="M-14 8 Q0 20 14 8" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+      <!-- Antenna -->
+      <line x1="0" y1="-24" x2="0" y2="-18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="0" cy="-26" r="4" fill="url(#sparkleGradient)"/>
+      <circle cx="0" cy="-26" r="2" fill="white"/>
+    </g>
+
+    <!-- Sparkle accents -->
+    <g fill="rgba(255,255,255,0.9)">
+      <!-- Top right sparkle -->
+      <path d="M54 12 L56 16 L60 14 L56 18 L58 22 L54 18 L50 20 L54 16 Z" transform="scale(0.6) translate(30, 5)"/>
+    </g>
+  </g>
+
+  <!-- Wordmark: "Webese" -->
+  <g transform="translate(88, 40)">
+    <!-- Main text with gradient -->
+    <text
+      font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif"
+      font-size="36"
+      font-weight="700"
+      fill="url(#primaryGradient)"
+      dominant-baseline="middle"
+      letter-spacing="-0.02em"
+    >
+      Webese
+    </text>
+  </g>
+
+  <!-- Tagline -->
+  <g transform="translate(88, 62)">
+    <text
+      font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif"
+      font-size="11"
+      font-weight="500"
+      fill="#9ca3af"
+      dominant-baseline="middle"
+      letter-spacing="0.15em"
+    >
+      YOUR AI WEBSITE BUDDY
+    </text>
+  </g>
+</svg>
