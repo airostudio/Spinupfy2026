@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Professional blue color scheme - NO PURPLES
+        // Webese core blue scheme (unchanged — used by non-Spinupfy pages)
         primary: {
           DEFAULT: 'var(--color-primary, #2563eb)',
           50: '#eff6ff',
@@ -41,9 +41,41 @@ const config: Config = {
           800: '#155e75',
           900: '#164e63',
         },
+
+        // ── Spinupfy brand palette ─────────────────────────────
+        // Extracted from the Spinupfy logo:
+        //   Primary purple  → #7C35B8  (border, icons, CTAs)
+        //   Light pink      → #FAD8F0  (logo fill / card backgrounds)
+        //   Dark purple     → #5B1E90  (hover, headings)
+        spinupfy: {
+          50:  '#FDF5FB',   // near-white lavender tint
+          100: '#FAE8F5',   // very light pink (card bg, subtle fills)
+          200: '#F4C8E8',   // light pink
+          300: '#E89DD4',   // medium pink
+          400: '#D46EBC',   // pink-purple
+          500: '#B845A2',   // vibrant purple-pink
+          600: '#9B35B0',   // medium purple
+          700: '#7C35B8',   // ← PRIMARY (matches logo border/icons exactly)
+          800: '#5B1E90',   // dark purple (hovers, headings)
+          900: '#3D1066',   // very dark purple
+          950: '#260A42',   // near-black purple (dark backgrounds)
+        },
+
+        // Convenience aliases used throughout Spinupfy components
+        'sp-pink':  '#FAD8F0',  // logo light-pink fill
+        'sp-purple': '#7C35B8', // logo primary purple
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        // Spinupfy brand gradients
+        'spinupfy-gradient': 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)',
+        'spinupfy-soft':     'linear-gradient(135deg, #FAE8F5 0%, #F4C8E8 100%)',
+        'spinupfy-dark':     'linear-gradient(135deg, #3D1066 0%, #5B1E90 100%)',
+      },
+      boxShadow: {
+        'spinupfy': '0 4px 24px 0 rgba(124, 53, 184, 0.25)',
+        'spinupfy-lg': '0 8px 40px 0 rgba(124, 53, 184, 0.35)',
+        'spinupfy-glow': '0 0 0 3px rgba(124, 53, 184, 0.30)',
       },
     },
   },
