@@ -1,17 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-  <!-- Outer rounded rectangle (browser window shape) -->
-  <rect x="10" y="10" width="180" height="180" rx="32" ry="32" fill="#FAD8F0" stroke="#7C35B8" stroke-width="12"/>
-  <!-- Browser top bar -->
-  <rect x="10" y="10" width="180" height="52" rx="32" ry="32" fill="#FAD8F0" stroke="#7C35B8" stroke-width="12"/>
-  <!-- Cover bottom corners of top bar to make it flat-bottomed -->
-  <rect x="10" y="44" width="180" height="18" fill="#FAD8F0"/>
-  <line x1="10" y1="62" x2="190" y2="62" stroke="#7C35B8" stroke-width="12"/>
-  <!-- Three browser dots -->
-  <circle cx="48" cy="36" r="7" fill="#7C35B8"/>
-  <circle cx="72" cy="36" r="7" fill="#7C35B8"/>
-  <circle cx="96" cy="36" r="7" fill="#7C35B8"/>
-  <!-- Growth chart line (upward trending arrow) -->
-  <polyline points="40,148 78,118 108,130 152,82" stroke="#7C35B8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Arrow head -->
-  <polyline points="132,72 152,82 142,102" stroke="#7C35B8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" fill="none">
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-color="#7C35B8" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <!-- Outer rounded rectangle -->
+    <rect x="20" y="14" width="180" height="180" rx="32" ry="32" fill="#FAD8F0" stroke="#7C35B8" stroke-width="12"/>
+    <!-- Title bar top (round top corners only) -->
+    <rect x="20" y="14" width="180" height="52" rx="32" ry="32" fill="#FAD8F0" stroke="#7C35B8" stroke-width="12"/>
+    <!-- Fill flat bottom of title bar -->
+    <rect x="26" y="48" width="168" height="18" fill="#FAD8F0"/>
+    <!-- Title bar divider line -->
+    <line x1="20" y1="66" x2="200" y2="66" stroke="#7C35B8" stroke-width="12"/>
+    <!-- Three dots (left side) -->
+    <circle cx="56" cy="40" r="7" fill="#7C35B8"/>
+    <circle cx="80" cy="40" r="7" fill="#7C35B8"/>
+    <circle cx="104" cy="40" r="7" fill="#7C35B8"/>
+    <!-- Smooth growth curve -->
+    <path d="M 48,162 C 70,162 85,134 115,114 S 150,89 168,72"
+      stroke="#7C35B8" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <!-- Arrow head (↗) -->
+    <polyline points="146,66 172,66 172,92"
+      stroke="#7C35B8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
 </svg>
