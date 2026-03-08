@@ -15,7 +15,7 @@ export function Footer() {
           <div className="col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/spinupfy-logo.svg"
+                src="/icon.png"
                 alt="Spinupfy — AI Website Builder"
                 width={180}
                 height={50}

@@ -7,62 +7,75 @@ import { motion } from 'framer-motion'
 import {
   Sparkles, ArrowRight, Star, Check, ChevronRight,
   Wand2, Palette, Globe, ShieldCheck, BarChart3, Layers,
-  MessageSquare, Rocket, Clock, Zap,
+  MessageSquare, Rocket, Clock, Zap, Store, Calendar,
+  Users, Camera, Home, Music, Utensils, Briefcase,
 } from 'lucide-react'
 import { Header, Footer } from '@/components/layout'
 import { ShowcaseSection, HowItWorksSection, VideoDemoSection } from '@/components/marketing'
 import { createClient } from '@/lib/supabase'
 
 const BUSINESS_TYPES = [
-  'Coffee Shop',
-  'Fitness Studio',
-  'Law Firm',
-  'Restaurant',
-  'Real Estate Agency',
-  'Hair Salon',
-  'Dental Practice',
-  'Consultant',
-  'Yoga Studio',
-  'Photography Studio',
+  { label: 'Pop-Up Shop',          icon: '🛍️' },
+  { label: 'Conference & Summit',  icon: '🎤' },
+  { label: 'Event Booking',        icon: '📅' },
+  { label: 'Real Estate Agency',   icon: '🏡' },
+  { label: 'Food & Drink Market',  icon: '🍜' },
+  { label: 'Music Festival',       icon: '🎵' },
+  { label: 'Wedding Venue',        icon: '💍' },
+  { label: 'Trade Show Booth',     icon: '🏛️' },
+  { label: 'Yoga Retreat',         icon: '🧘' },
+  { label: 'Art Exhibition',       icon: '🎨' },
+  { label: 'Networking Event',     icon: '🤝' },
+  { label: 'Farmers Market',       icon: '🥕' },
+  { label: 'Photography Studio',   icon: '📸' },
+  { label: 'Masterclass',          icon: '📚' },
+  { label: 'Fitness Studio',       icon: '💪' },
+  { label: 'Charity Fundraiser',   icon: '❤️' },
 ]
 
 const features = [
   {
     icon: Wand2,
     title: 'AI Website Builder',
-    description: 'Describe your business in plain English. Our AI crafts a complete, professional website — pages, copy, images, and layout — in under 60 seconds. No templates to wrestle with.',
+    description:
+      'Describe your event or business in plain English. Our AI crafts a complete, professional website — pages, copy, images, and layout — in under 60 seconds.',
     color: '#7C35B8',
-    tags: ['Auto-generated copy', 'Industry templates', 'Smart layout AI', 'Image generation'],
+    tags: ['Auto-generated copy', 'Event templates', 'Smart layout AI', 'Image generation'],
     wide: true,
   },
   {
-    icon: MessageSquare,
-    title: 'AI Content Writer',
-    description: 'Auto-generate headlines, body copy, and CTAs perfectly tuned to your brand voice and audience.',
+    icon: Calendar,
+    title: 'Event & Booking Pages',
+    description:
+      'Dedicated landing pages for pop-ups, conferences, and events — with registration forms, ticket links, and schedules built in.',
     color: '#B845A2',
   },
   {
     icon: Palette,
     title: 'Smart Design System',
-    description: 'AI picks the perfect colour palette, typography, and layout to match your brand personality.',
+    description:
+      'AI picks the perfect colour palette, typography, and layout to match your brand and event vibe.',
     color: '#9B35B0',
   },
   {
     icon: BarChart3,
     title: 'Built-in SEO',
-    description: 'Meta tags, structured data, sitemaps, and page speed optimisation — all automated, every time.',
+    description:
+      'Meta tags, structured data, sitemaps, and page-speed optimisation — all automated so attendees can find you.',
     color: '#D46EBC',
   },
   {
     icon: Rocket,
     title: 'Instant Publishing',
-    description: 'Go live on a free subdomain instantly, or connect your own domain in one click. SSL included.',
+    description:
+      'Go live on a free subdomain instantly, or connect your own domain. SSL included. Share the link in minutes.',
     color: '#7C35B8',
   },
   {
     icon: ShieldCheck,
     title: 'Enterprise Security',
-    description: 'SSL, DDoS protection, automatic backups, and 99.9% uptime SLA — baked in from day one.',
+    description:
+      'SSL, DDoS protection, automatic backups, and 99.9% uptime — so your event page is always live when you need it.',
     color: '#B845A2',
     tags: ['99.9% Uptime', 'SSL Included', 'DDoS Protection', 'Auto Backups', 'GDPR Ready'],
     wide: true,
@@ -70,32 +83,47 @@ const features = [
   {
     icon: Layers,
     title: 'Visual Editor',
-    description: 'Fine-tune any element with our pixel-perfect drag-and-drop editor. Everything updates in real-time.',
+    description:
+      'Fine-tune any element with our drag-and-drop editor. Change colours, text, images — all in real-time.',
     color: '#9B35B0',
   },
+]
+
+const useCases = [
+  { icon: '🛍️', title: 'Pop-Up Shops', desc: 'Launch in hours, not days' },
+  { icon: '🎤', title: 'Conferences', desc: 'Agendas, speakers & tickets' },
+  { icon: '🏡', title: 'Real Estate', desc: 'Property listings & leads' },
+  { icon: '🍜', title: 'Food Markets', desc: 'Menus, bookings & maps' },
+  { icon: '🎵', title: 'Music Events', desc: 'Lineups & ticket sales' },
+  { icon: '💍', title: 'Weddings', desc: 'RSVP & venue details' },
+  { icon: '📸', title: 'Photography', desc: 'Portfolio & enquiries' },
+  { icon: '📚', title: 'Masterclasses', desc: 'Registrations & info' },
 ]
 
 const testimonials = [
   {
     name: 'Sarah Mitchell',
-    role: 'Owner, Bloom Floristry',
+    role: 'Owner, Bloom Pop-Up Market',
     avatar: '🌸',
     rating: 5,
-    quote: 'I had a stunning website live in under 3 minutes. My bookings doubled within the first week. Spinupfy is an absolute game changer.',
+    quote:
+      'I had a stunning pop-up shop website live in under 3 minutes. My bookings doubled within the first week. Spinupfy is an absolute game changer.',
   },
   {
     name: 'James Okafor',
-    role: 'Founder, Apex Consulting',
-    avatar: '💼',
+    role: 'Organiser, Summit Connect',
+    avatar: '🎤',
     rating: 5,
-    quote: 'The AI understood my business instantly. The copy it generated was better than anything I could have written myself. Incredible tool.',
+    quote:
+      'Built our conference website in minutes. Registration went up 40% compared to our old site. The AI understood our event instantly.',
   },
   {
     name: 'Priya Sharma',
-    role: 'Chef & Owner, Spice Route',
-    avatar: '🍛',
+    role: 'Chef & Owner, Spice Market',
+    avatar: '🍜',
     rating: 5,
-    quote: 'As someone with zero tech skills, I launched a beautiful restaurant website in minutes. My customers love it and so do I.',
+    quote:
+      'As someone with zero tech skills, I launched a beautiful food market website in minutes. My customers love it and so do I.',
   },
 ]
 
@@ -103,7 +131,7 @@ const plans = [
   {
     name: 'Starter',
     price: 'Free',
-    description: 'Perfect for getting started',
+    description: 'Perfect for one-off events',
     features: ['1 website', 'AI builder', 'Free subdomain', 'SSL included'],
     cta: 'Start for Free',
     href: '/create',
@@ -113,7 +141,7 @@ const plans = [
     price: '$12',
     period: '/mo',
     description: 'For growing businesses',
-    features: ['5 websites', 'Custom domain', 'Advanced SEO', 'Analytics dashboard'],
+    features: ['5 websites', 'Custom domain', 'Advanced SEO', 'Analytics'],
     cta: 'Get Started',
     href: '/pricing',
     popular: true,
@@ -129,11 +157,14 @@ const plans = [
   },
 ]
 
+// Gradient string reused throughout
+const SP_GRAD = 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)'
+
 export default function Home() {
   const router = useRouter()
   const supabase = createClient()
   const [checkingAuth, setCheckingAuth] = useState(true)
-  const [businessTypeIndex, setBusinessTypeIndex] = useState(0)
+  const [typeIndex, setTypeIndex] = useState(0)
 
   useEffect(() => {
     checkAuthAndRedirect()
@@ -143,8 +174,8 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setBusinessTypeIndex(prev => (prev + 1) % BUSINESS_TYPES.length)
-    }, 2800)
+      setTypeIndex(prev => (prev + 1) % BUSINESS_TYPES.length)
+    }, 2600)
     return () => clearInterval(interval)
   }, [])
 
@@ -163,60 +194,65 @@ export default function Home() {
 
   if (checkingAuth) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-950">
+      <main className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <div className="relative w-14 h-14 mx-auto mb-4">
-            <div className="absolute inset-0 rounded-full bg-spinupfy-700/30 animate-ping" />
-            <Sparkles className="w-14 h-14 relative z-10 animate-pulse" style={{ color: '#7C35B8' }} />
+          <div className="relative w-12 h-12 mx-auto mb-4">
+            <div
+              className="absolute inset-0 rounded-full animate-ping opacity-40"
+              style={{ background: SP_GRAD }}
+            />
+            <Sparkles className="w-12 h-12 relative z-10 animate-pulse" style={{ color: '#7C35B8' }} />
           </div>
-          <p className="text-gray-500 text-sm">Loading…</p>
+          <p className="text-gray-400 text-sm">Loading…</p>
         </div>
       </main>
     )
   }
 
   return (
-    <main className="min-h-screen bg-gray-950" id="main-content">
+    <main className="min-h-screen bg-white text-gray-900" id="main-content">
       <a href="#main-content" className="skip-to-content">Skip to main content</a>
-      <Header />
+      <Header light />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section
         aria-label="Hero"
         className="relative overflow-hidden pt-32 pb-24 sm:pb-36 px-6"
+        style={{ background: 'linear-gradient(180deg, #FDF5FB 0%, #ffffff 100%)' }}
       >
-        {/* Atmospheric gradient orbs */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[1000px] h-[700px] rounded-full blur-3xl opacity-20"
-            style={{ background: 'radial-gradient(ellipse, #7C35B8 0%, transparent 70%)' }} />
-          <div className="absolute top-40 -right-40 w-[600px] h-[600px] rounded-full blur-3xl opacity-15"
-            style={{ background: 'radial-gradient(ellipse, #B845A2 0%, transparent 70%)' }} />
-          <div className="absolute bottom-0 -left-32 w-[500px] h-[400px] rounded-full blur-3xl opacity-10"
-            style={{ background: 'radial-gradient(ellipse, #5B1E90 0%, transparent 70%)' }} />
-          {/* Subtle dot grid */}
+        {/* Soft decorative orbs */}
+        <div aria-hidden="true" className="absolute inset-0 -z-0 pointer-events-none overflow-hidden">
           <div
-            className="absolute inset-0 opacity-[0.035]"
-            style={{
-              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
-              backgroundSize: '48px 48px',
-            }}
+            className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+            style={{ background: 'radial-gradient(ellipse, #B845A2 0%, transparent 65%)' }}
+          />
+          <div
+            className="absolute top-60 -left-32 w-[500px] h-[500px] rounded-full opacity-15 blur-3xl"
+            style={{ background: 'radial-gradient(ellipse, #7C35B8 0%, transparent 65%)' }}
+          />
+          <div
+            className="absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full opacity-10 blur-3xl"
+            style={{ background: 'radial-gradient(ellipse, #FAD8F0 0%, transparent 65%)' }}
           />
         </div>
 
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Announcement badge */}
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 mb-8 backdrop-blur-sm"
-            style={{ borderColor: 'rgba(124,53,184,0.4)', background: 'rgba(124,53,184,0.12)' }}
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 mb-8"
+            style={{ borderColor: 'rgba(124,53,184,0.25)', background: 'rgba(124,53,184,0.06)' }}
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: '#B845A2' }} />
+              <span
+                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
+                style={{ backgroundColor: '#B845A2' }}
+              />
               <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: '#B845A2' }} />
             </span>
-            <span className="text-sm font-medium" style={{ color: '#E89DD4' }}>
+            <span className="text-sm font-medium" style={{ color: '#7C35B8' }}>
               Now powered by GPT-4o — smarter than ever
             </span>
             <ChevronRight className="w-3.5 h-3.5" style={{ color: '#B845A2' }} />
@@ -227,17 +263,17 @@ export default function Home() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.06] mb-6 text-white"
+            className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.06] mb-6 text-gray-900"
           >
-            Your{' '}
+            Instant websites for{' '}
+            <br className="hidden sm:block" />
             <span
-              key={businessTypeIndex}
-              className="animate-fade-in inline-block bg-spinupfy-gradient bg-clip-text text-transparent"
+              key={typeIndex}
+              className="animate-fade-in inline-block bg-clip-text text-transparent"
+              style={{ backgroundImage: SP_GRAD }}
             >
-              {BUSINESS_TYPES[businessTypeIndex]}
+              {BUSINESS_TYPES[typeIndex].icon} {BUSINESS_TYPES[typeIndex].label}
             </span>
-            <br />
-            Website, Built by AI
           </motion.h1>
 
           {/* Sub-headline */}
@@ -245,10 +281,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Tell Spinupfy what you do. Our AI writes the copy, picks the design, and publishes a
-            stunning website — in under 60 seconds. No code. No designers. No hassle.
+            Tell Spinupfy what you're running. Our AI writes the copy, picks the design, and
+            publishes a stunning website — in under 60 seconds. No code. No designers. No hassle.
           </motion.p>
 
           {/* CTAs */}
@@ -256,15 +292,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14"
           >
             <Link
               href="/create"
               className="group shine-effect inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-lg transition-all duration-300"
-              style={{
-                background: 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)',
-                boxShadow: '0 8px 32px rgba(124,53,184,0.4)',
-              }}
+              style={{ background: SP_GRAD, boxShadow: '0 8px 32px rgba(124,53,184,0.35)' }}
             >
               <Sparkles className="w-5 h-5" />
               Build My Website Free
@@ -272,13 +305,13 @@ export default function Home() {
             </Link>
             <Link
               href="#how-it-works"
-              className="inline-flex items-center gap-2 px-8 py-4 glass hover:bg-white/15 rounded-xl font-semibold text-gray-200 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-gray-700 bg-white border border-gray-200 hover:border-purple-300 hover:text-purple-700 transition-all duration-300 shadow-sm"
             >
               See How It Works
             </Link>
           </motion.div>
 
-          {/* Social proof strip */}
+          {/* Social proof */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -290,7 +323,7 @@ export default function Home() {
                 {['🧑‍💼', '👩‍🍳', '👨‍⚕️', '👩‍🎨', '🧑‍🔧'].map((emoji, i) => (
                   <div
                     key={i}
-                    className="w-7 h-7 rounded-full bg-gray-800 border-2 border-gray-950 flex items-center justify-center text-sm"
+                    className="w-7 h-7 rounded-full bg-purple-50 border-2 border-white flex items-center justify-center text-sm shadow-sm"
                   >
                     {emoji}
                   </div>
@@ -305,39 +338,38 @@ export default function Home() {
               <span className="ml-1">4.9 / 5 from 2,400+ reviews</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-green-400" />
+              <Clock className="w-4 h-4" style={{ color: '#B845A2' }} />
               <span>
-                Average build time:{' '}
-                <strong className="text-green-400 font-semibold">58 seconds</strong>
+                Average build: <strong style={{ color: '#7C35B8' }}>58 seconds</strong>
               </span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── TRUST BAR ────────────────────────────────────────────── */}
+      {/* ── USE CASES STRIP ──────────────────────────────────────── */}
       <section
-        aria-label="Industries we serve"
-        className="py-10 border-y border-gray-800/60 bg-gray-900/30"
+        aria-label="What you can build"
+        className="py-16 px-6 border-y border-gray-100 bg-white"
       >
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-600 mb-6">
-            Trusted by businesses across every industry
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-10">
+            Perfect for every event, business & pop-up
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-5 sm:gap-10 opacity-50">
-            {[
-              '🏨 Hospitality',
-              '🏥 Healthcare',
-              '⚖️ Legal',
-              '🏗️ Construction',
-              '🎓 Education',
-              '🛍️ Retail',
-              '💆 Wellness',
-              '🍽️ Food & Drink',
-            ].map(industry => (
-              <span key={industry} className="text-sm text-gray-400 font-medium whitespace-nowrap">
-                {industry}
-              </span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {useCases.map((uc, i) => (
+              <motion.div
+                key={uc.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="flex flex-col items-center text-center p-5 rounded-2xl bg-gray-50 hover:bg-purple-50 border border-transparent hover:border-purple-100 transition-all duration-200 group"
+              >
+                <span className="text-3xl mb-3">{uc.icon}</span>
+                <span className="text-sm font-semibold text-gray-800 group-hover:text-purple-800">{uc.title}</span>
+                <span className="text-xs text-gray-400 mt-1">{uc.desc}</span>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -352,7 +384,7 @@ export default function Home() {
       </div>
 
       {/* ── FEATURES ─────────────────────────────────────────────── */}
-      <section id="features" aria-label="Features" className="py-24 md:py-32 px-6 bg-gray-950">
+      <section id="features" aria-label="Features" className="py-24 md:py-32 px-6 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <motion.p
@@ -369,10 +401,10 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-4xl md:text-5xl font-extrabold text-white mb-4"
+              className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
             >
               Powerful features.{' '}
-              <span className="bg-spinupfy-gradient bg-clip-text text-transparent">
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: SP_GRAD }}>
                 Zero complexity.
               </span>
             </motion.h2>
@@ -381,7 +413,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-gray-400 max-w-2xl mx-auto"
+              className="text-xl text-gray-500 max-w-2xl mx-auto"
             >
               Everything a professional web agency would build, delivered in seconds by AI.
             </motion.p>
@@ -389,35 +421,31 @@ export default function Home() {
 
           {/* Bento grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Wide card — AI Builder */}
+            {/* Wide — AI Builder */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="md:col-span-2 glass-card rounded-3xl p-8 hover-lift group"
+              className="md:col-span-2 rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: 'rgba(124,53,184,0.15)' }}
+                style={{ background: 'rgba(124,53,184,0.1)' }}
               >
                 <Wand2 className="w-7 h-7" style={{ color: '#7C35B8' }} />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">AI Website Builder</h3>
-              <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                Describe your business in plain English. Our AI crafts a complete, professional
-                website — pages, copy, images, and layout — in under 60 seconds. No templates to
-                wrestle with.
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">AI Website Builder</h3>
+              <p className="text-gray-500 text-lg leading-relaxed mb-6">
+                Describe your event or business in plain English. Our AI crafts a complete
+                website — pages, copy, images, and layout — in under 60 seconds. No templates
+                to wrestle with.
               </p>
               <div className="flex flex-wrap gap-2">
-                {['Auto-generated copy', 'Industry templates', 'Smart layout AI', 'Image generation'].map(tag => (
+                {['Auto-generated copy', 'Event templates', 'Smart layout AI', 'Image generation'].map(tag => (
                   <span
                     key={tag}
                     className="px-3 py-1 rounded-full text-xs font-medium border"
-                    style={{
-                      background: 'rgba(124,53,184,0.12)',
-                      borderColor: 'rgba(124,53,184,0.3)',
-                      color: '#E89DD4',
-                    }}
+                    style={{ background: 'rgba(124,53,184,0.07)', borderColor: 'rgba(124,53,184,0.2)', color: '#7C35B8' }}
                   >
                     {tag}
                   </span>
@@ -425,22 +453,22 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* AI Content */}
+            {/* Event & Booking */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="glass-card rounded-3xl p-8 hover-lift"
+              className="rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: 'rgba(184,69,162,0.15)' }}>
-                <MessageSquare className="w-7 h-7" style={{ color: '#B845A2' }} />
+                style={{ background: 'rgba(184,69,162,0.1)' }}>
+                <Calendar className="w-7 h-7" style={{ color: '#B845A2' }} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">AI Content Writer</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Auto-generate headlines, body copy, and CTAs perfectly tuned to your brand voice
-                and target audience.
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Event & Booking Pages</h3>
+              <p className="text-gray-500 leading-relaxed">
+                Dedicated landing pages for pop-ups, conferences, and events — with registration
+                forms, ticket links, and schedules built in.
               </p>
             </motion.div>
 
@@ -450,16 +478,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-3xl p-8 hover-lift"
+              className="rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: 'rgba(155,53,176,0.15)' }}>
+                style={{ background: 'rgba(155,53,176,0.1)' }}>
                 <Palette className="w-7 h-7" style={{ color: '#9B35B0' }} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Smart Design System</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Design System</h3>
+              <p className="text-gray-500 leading-relaxed">
                 AI picks the perfect colour palette, typography, and layout to match your brand
-                personality.
+                and event vibe.
               </p>
             </motion.div>
 
@@ -469,16 +497,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="glass-card rounded-3xl p-8 hover-lift"
+              className="rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: 'rgba(212,110,188,0.15)' }}>
+                style={{ background: 'rgba(212,110,188,0.1)' }}>
                 <BarChart3 className="w-7 h-7" style={{ color: '#D46EBC' }} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Built-in SEO</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Meta tags, structured data, sitemaps, and page-speed optimisation — all automated,
-                every time.
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Built-in SEO</h3>
+              <p className="text-gray-500 leading-relaxed">
+                Meta tags, structured data, sitemaps, and page-speed optimisation — so attendees
+                and customers can find you on Google.
               </p>
             </motion.div>
 
@@ -488,49 +516,45 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="glass-card rounded-3xl p-8 hover-lift"
+              className="rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: 'rgba(124,53,184,0.15)' }}>
+                style={{ background: 'rgba(124,53,184,0.1)' }}>
                 <Rocket className="w-7 h-7" style={{ color: '#7C35B8' }} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Instant Publishing</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Instant Publishing</h3>
+              <p className="text-gray-500 leading-relaxed">
                 Go live on a free subdomain instantly, or connect your own domain in one click.
-                SSL included.
+                SSL included. Share in minutes.
               </p>
             </motion.div>
 
-            {/* Security — wide card */}
+            {/* Security — wide */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
-              className="md:col-span-2 glass-card rounded-3xl p-8 hover-lift flex flex-col md:flex-row gap-6 items-start"
+              className="md:col-span-2 rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-start"
             >
               <div className="flex-shrink-0">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                  style={{ backgroundColor: 'rgba(184,69,162,0.15)' }}>
+                  style={{ background: 'rgba(184,69,162,0.1)' }}>
                   <ShieldCheck className="w-7 h-7" style={{ color: '#B845A2' }} />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-3">Enterprise-Grade Security</h3>
-                <p className="text-gray-400 leading-relaxed mb-4">
-                  SSL certificates, DDoS protection, automatic backups, and a 99.9% uptime SLA —
-                  rock-solid infrastructure so you never worry about downtime.
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Enterprise-Grade Security</h3>
+                <p className="text-gray-500 leading-relaxed mb-4">
+                  SSL, DDoS protection, automatic backups, and a 99.9% uptime SLA — so your event
+                  or shop page is always live when people need it most.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {['99.9% Uptime', 'SSL Included', 'DDoS Protection', 'Auto Backups', 'GDPR Ready'].map(tag => (
                     <span
                       key={tag}
                       className="px-3 py-1 rounded-full text-xs font-medium border"
-                      style={{
-                        background: 'rgba(184,69,162,0.1)',
-                        borderColor: 'rgba(184,69,162,0.3)',
-                        color: '#E89DD4',
-                      }}
+                      style={{ background: 'rgba(184,69,162,0.07)', borderColor: 'rgba(184,69,162,0.2)', color: '#B845A2' }}
                     >
                       {tag}
                     </span>
@@ -545,16 +569,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="glass-card rounded-3xl p-8 hover-lift"
+              className="rounded-3xl p-8 hover-lift border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: 'rgba(155,53,176,0.15)' }}>
+                style={{ background: 'rgba(155,53,176,0.1)' }}>
                 <Layers className="w-7 h-7" style={{ color: '#9B35B0' }} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Visual Editor</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Fine-tune any element with our pixel-perfect drag-and-drop editor. Everything
-                updates in real-time.
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Visual Editor</h3>
+              <p className="text-gray-500 leading-relaxed">
+                Fine-tune any element with our drag-and-drop editor. Change colours, text, images
+                — all updates in real-time.
               </p>
             </motion.div>
           </div>
@@ -565,17 +589,21 @@ export default function Home() {
       <VideoDemoSection />
 
       {/* ── TESTIMONIALS ─────────────────────────────────────────── */}
-      <section aria-label="Customer testimonials" className="py-24 md:py-32 px-6 bg-gray-900/40">
+      <section
+        aria-label="Customer testimonials"
+        className="py-24 md:py-32 px-6"
+        style={{ background: 'linear-gradient(180deg, #FDF5FB 0%, #ffffff 100%)' }}
+      >
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-extrabold text-white mb-4"
+              className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
             >
               Loved by{' '}
-              <span className="bg-spinupfy-gradient bg-clip-text text-transparent">
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: SP_GRAD }}>
                 10,000+
               </span>{' '}
               businesses
@@ -585,9 +613,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-xl text-gray-400"
+              className="text-xl text-gray-500"
             >
-              Real results from real business owners
+              Real results from real event organisers and business owners
             </motion.p>
           </div>
 
@@ -599,23 +627,26 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-3xl p-8 hover-lift flex flex-col"
+                className="bg-white rounded-3xl p-8 hover-lift flex flex-col border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-1 mb-5">
                   {[...Array(t.rating)].map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-gray-300 leading-relaxed mb-6 flex-1 text-[15px]">
+                <blockquote className="text-gray-600 leading-relaxed mb-6 flex-1 text-[15px]">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-xl flex-shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl flex-shrink-0 border border-gray-100"
+                    style={{ background: 'rgba(124,53,184,0.06)' }}
+                  >
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="text-white font-semibold text-sm">{t.name}</div>
-                    <div className="text-gray-500 text-xs">{t.role}</div>
+                    <div className="text-gray-900 font-semibold text-sm">{t.name}</div>
+                    <div className="text-gray-400 text-xs">{t.role}</div>
                   </div>
                 </div>
               </motion.article>
@@ -625,24 +656,26 @@ export default function Home() {
       </section>
 
       {/* ── PRICING TEASER ───────────────────────────────────────── */}
-      <section aria-label="Pricing" className="py-24 md:py-32 px-6 bg-gray-950">
+      <section aria-label="Pricing" className="py-24 md:py-32 px-6 bg-white">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-extrabold text-white mb-4"
+              className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
             >
               Simple, transparent{' '}
-              <span className="bg-spinupfy-gradient bg-clip-text text-transparent">pricing</span>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: SP_GRAD }}>
+                pricing
+              </span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-xl text-gray-400"
+              className="text-xl text-gray-500"
             >
               Start free. Upgrade as you grow. Cancel anytime.
             </motion.p>
@@ -656,51 +689,48 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative rounded-3xl p-8 flex flex-col ${
+                className={`relative rounded-3xl p-8 flex flex-col border shadow-sm ${
                   plan.popular
-                    ? 'border-2'
-                    : 'glass-card'
+                    ? 'border-2 shadow-lg'
+                    : 'border-gray-100 bg-white hover:shadow-md transition-shadow'
                 }`}
                 style={plan.popular ? {
-                  background: 'linear-gradient(180deg, rgba(124,53,184,0.18) 0%, rgba(184,69,162,0.08) 100%)',
-                  borderColor: 'rgba(124,53,184,0.6)',
+                  background: 'linear-gradient(180deg, #FAE8F5 0%, #ffffff 100%)',
+                  borderColor: '#7C35B8',
                 } : {}}
               >
                 {plan.popular && (
                   <div
                     className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-white text-xs font-bold"
-                    style={{ background: 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)' }}
+                    style={{ background: SP_GRAD }}
                   >
                     Most Popular
                   </div>
                 )}
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
-                  <p className="text-gray-500 text-sm mb-4">{plan.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{plan.name}</h3>
+                  <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold text-white">{plan.price}</span>
+                    <span className="text-4xl font-extrabold text-gray-900">{plan.price}</span>
                     {plan.period && (
-                      <span className="text-gray-500 text-sm">{plan.period}</span>
+                      <span className="text-gray-400 text-sm">{plan.period}</span>
                     )}
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map(f => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-gray-300">
-                      <Check className="w-4 h-4 flex-shrink-0" style={{ color: '#B845A2' }} />
+                    <li key={f} className="flex items-center gap-2 text-sm text-gray-600">
+                      <Check className="w-4 h-4 flex-shrink-0" style={{ color: '#7C35B8' }} />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <Link
                   href={plan.href}
-                  className={`w-full text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
-                    plan.popular ? 'text-white' : 'glass hover:bg-white/15 text-gray-200'
+                  className={`w-full text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 shine-effect ${
+                    plan.popular ? 'text-white' : 'text-gray-700 border border-gray-200 bg-white hover:border-purple-300 hover:text-purple-700'
                   }`}
-                  style={plan.popular ? {
-                    background: 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)',
-                    boxShadow: '0 4px 20px rgba(124,53,184,0.35)',
-                  } : {}}
+                  style={plan.popular ? { background: SP_GRAD, boxShadow: '0 4px 20px rgba(124,53,184,0.3)' } : {}}
                 >
                   {plan.cta}
                 </Link>
@@ -711,8 +741,8 @@ export default function Home() {
           <div className="text-center mt-10">
             <Link
               href="/pricing"
-              className="text-sm font-medium inline-flex items-center gap-1 transition-colors hover:opacity-80"
-              style={{ color: '#B845A2' }}
+              className="text-sm font-medium inline-flex items-center gap-1 transition-colors hover:opacity-70"
+              style={{ color: '#7C35B8' }}
             >
               View full pricing details <ChevronRight className="w-4 h-4" />
             </Link>
@@ -721,19 +751,19 @@ export default function Home() {
       </section>
 
       {/* ── FINAL CTA ────────────────────────────────────────────── */}
-      <section aria-label="Get started" className="py-24 px-6">
+      <section aria-label="Get started" className="py-24 px-6 bg-white">
         <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="relative rounded-3xl overflow-hidden p-12 md:p-20 text-center"
-            style={{ background: 'linear-gradient(135deg, #5B1E90 0%, #7C35B8 40%, #B845A2 100%)' }}
+            style={{ background: SP_GRAD }}
           >
-            {/* Background dot pattern */}
+            {/* Dot pattern */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 opacity-[0.08]"
+              className="absolute inset-0 opacity-[0.07]"
               style={{
                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1.5px, transparent 0)',
                 backgroundSize: '28px 28px',
@@ -741,8 +771,8 @@ export default function Home() {
             />
             <div className="relative z-10">
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 backdrop-blur-sm"
-                style={{ background: 'rgba(255,255,255,0.15)' }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                style={{ background: 'rgba(255,255,255,0.2)' }}
               >
                 <Sparkles className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-white">No credit card required</span>
@@ -751,19 +781,19 @@ export default function Home() {
                 Your website is<br />58 seconds away
               </h2>
               <p className="text-xl text-white/80 mb-10 max-w-xl mx-auto">
-                Join 10,000+ business owners who launched their professional website with Spinupfy today.
+                Join 10,000+ event organisers and business owners who launched with Spinupfy today.
               </p>
               <Link
                 href="/create"
                 className="inline-flex items-center gap-2 px-10 py-5 bg-white rounded-xl font-bold text-lg transition-all duration-300 hover:bg-purple-50 shine-effect"
-                style={{ color: '#5B1E90', boxShadow: '0 8px 40px rgba(0,0,0,0.25)' }}
+                style={{ color: '#5B1E90', boxShadow: '0 8px 40px rgba(0,0,0,0.15)' }}
               >
                 <Sparkles className="w-5 h-5" />
                 Build My Website Free
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <p className="text-white/55 text-sm mt-6">
-                Free forever plan available · No setup fees · Cancel anytime
+                Free forever plan · No setup fees · Cancel anytime
               </p>
             </div>
           </motion.div>
