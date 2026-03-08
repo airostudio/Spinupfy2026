@@ -7,6 +7,16 @@ import { Check } from 'lucide-react'
 
 const showcaseWebsites = [
   {
+    id: 'apex-realty',
+    name: 'The Apex',
+    businessType: 'Luxury Real Estate',
+    description: 'A 4,200 sq ft crown jewel on the 55th floor. Unobstructed 360° skyline views, private terrace, and bespoke finishes throughout.',
+    colors: { primary: '#0d0d0d', accent: '#c9a84c' },
+    stats: { buildTime: '2 minutes', sections: 6 },
+    screenshot: '/samples/apex-realty.png',
+    features: ['Private Viewing Booking', 'Property Gallery', 'Agent Contact']
+  },
+  {
     id: 'prestige-estates',
     name: 'PRESTIGE',
     businessType: 'Luxury Real Estate',
@@ -89,26 +99,28 @@ export function ShowcaseSection() {
           transition={{ duration: 0.3 }}
           className="bg-gray-800 rounded-2xl overflow-hidden shadow-2xl"
         >
-          {/* Screenshot Preview */}
-          <div className="relative w-full aspect-[16/10] bg-white">
+          {/* Browser Chrome Mockup */}
+          <div className="bg-gray-900 flex items-center px-4 gap-2 h-9 border-b border-gray-700">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500" />
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+            </div>
+            <div className="flex-1 text-center text-xs text-gray-400">
+              {selectedWebsite.name}
+            </div>
+          </div>
+
+          {/* Screenshot Preview — scrollable to show full-length pages */}
+          <div className="w-full h-[480px] overflow-y-auto bg-white">
             <Image
               src={selectedWebsite.screenshot}
               alt={`${selectedWebsite.name} website preview`}
-              fill
-              className="object-contain"
+              width={1200}
+              height={3000}
+              className="w-full h-auto"
               priority
             />
-            {/* Browser Chrome Mockup */}
-            <div className="absolute top-0 left-0 right-0 h-8 bg-gray-900/90 backdrop-blur-sm flex items-center px-4 gap-2">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-              </div>
-              <div className="flex-1 text-center text-xs text-gray-400">
-                {selectedWebsite.name}
-              </div>
-            </div>
           </div>
 
           {/* Website Details */}
