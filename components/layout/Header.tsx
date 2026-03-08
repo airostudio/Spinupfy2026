@@ -80,7 +80,7 @@ export function Header() {
             className="flex items-center hover:opacity-90 transition-opacity py-[2px]"
           >
             <Image
-              src="/webese-logo.png"
+              src="/icon.png"
               alt="Webese - Your AI Website Buddy"
               width={200}
               height={55}

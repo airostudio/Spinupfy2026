@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   title: 'Webese - Your AI Website Buddy | Create Beautiful Websites in Seconds',
   description: 'Build stunning websites using AI. Just tell us what you do and AI designs everything for you. Webese is your AI website buddy.',
   icons: {
-    icon: '/webese-icon.svg',
-    shortcut: '/webese-icon.svg',
-    apple: '/webese-icon.svg',
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
   },
 }
 

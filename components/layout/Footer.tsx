@@ -15,7 +15,7 @@ export function Footer() {
           <div className="col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/webese-logo.png"
+                src="/icon.png"
                 alt="Webese - Your AI Website Buddy"
                 width={180}
                 height={50}
