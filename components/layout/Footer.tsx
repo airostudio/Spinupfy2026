@@ -15,19 +15,19 @@ export function Footer() {
           <div className="col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/icon.png"
-                alt="Webese - Your AI Website Buddy"
+                src="/spinupfy-logo.svg"
+                alt="Spinupfy — AI Website Builder"
                 width={180}
                 height={50}
                 className="h-11 w-auto object-contain"
               />
             </Link>
             <p className="text-gray-400 text-sm mb-6 max-w-xs">
-              Build stunning websites in seconds with AI. Your friendly website buddy that handles design, content, and everything in between.
+              Build a stunning, professional website in under 60 seconds. AI writes the copy, designs the layout, and publishes it instantly.
             </p>
             <div className="flex gap-3">
               <a
-                href="https://twitter.com/webese"
+                href="https://twitter.com/spinupfy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center transition-colors group"
@@ -36,7 +36,7 @@ export function Footer() {
                 <Twitter className="w-4 h-4 text-gray-400 group-hover:text-white" />
               </a>
               <a
-                href="https://facebook.com/webese"
+                href="https://facebook.com/spinupfy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center transition-colors group"
@@ -45,7 +45,7 @@ export function Footer() {
                 <Facebook className="w-4 h-4 text-gray-400 group-hover:text-white" />
               </a>
               <a
-                href="https://instagram.com/webese"
+                href="https://instagram.com/spinupfy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center transition-colors group"
@@ -54,7 +54,7 @@ export function Footer() {
                 <Instagram className="w-4 h-4 text-gray-400 group-hover:text-white" />
               </a>
               <a
-                href="https://linkedin.com/company/webese"
+                href="https://linkedin.com/company/spinupfy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center transition-colors group"
@@ -63,7 +63,7 @@ export function Footer() {
                 <Linkedin className="w-4 h-4 text-gray-400 group-hover:text-white" />
               </a>
               <a
-                href="https://youtube.com/@webese"
+                href="https://youtube.com/@spinupfy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center transition-colors group"
@@ -72,7 +72,7 @@ export function Footer() {
                 <Youtube className="w-4 h-4 text-gray-400 group-hover:text-white" />
               </a>
               <a
-                href="https://github.com/webese"
+                href="https://github.com/spinupfy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-500 flex items-center justify-center transition-colors group"
@@ -231,7 +231,7 @@ export function Footer() {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {currentYear} Webese. All rights reserved.
+              © {currentYear} Spinupfy. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <Link href="/sitemap" className="text-gray-500 hover:text-gray-300 transition-colors">

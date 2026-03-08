@@ -80,8 +80,8 @@ export function Header() {
             className="flex items-center hover:opacity-90 transition-opacity py-[2px]"
           >
             <Image
-              src="/icon.png"
-              alt="Webese - Your AI Website Buddy"
+              src="/spinupfy-logo.svg"
+              alt="Spinupfy — AI Website Builder"
               width={200}
               height={55}
               className="h-11 md:h-12 w-auto object-contain"
@@ -104,7 +104,7 @@ export function Header() {
                     </Link>
                     <Link
                       href="/dashboard/content-writer"
-                      className="text-purple-400 hover:text-purple-300 transition-colors font-medium"
+                      className="transition-colors font-medium" style={{ color: '#D46EBC' }}
                     >
                       AI Writer
                     </Link>
@@ -141,7 +141,7 @@ export function Header() {
                     </Link>
                     <Link
                       href="/login"
-                      className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 rounded-lg font-semibold text-white transition-colors"
+                      className="px-6 py-2.5 rounded-lg font-semibold text-white transition-all duration-300" style={{ background: 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)' }}
                     >
                       Get Started
                     </Link>
