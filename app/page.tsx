@@ -6,9 +6,8 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Sparkles, ArrowRight, Star, Check, ChevronRight,
-  Wand2, Palette, Globe, ShieldCheck, BarChart3, Layers,
-  MessageSquare, Rocket, Clock, Zap, Store, Calendar,
-  Users, Camera, Home, Music, Utensils, Briefcase,
+  Wand2, Palette, ShieldCheck, BarChart3, Layers,
+  Rocket, Clock, Calendar,
 } from 'lucide-react'
 import { Header, Footer } from '@/components/layout'
 import { ShowcaseSection, HowItWorksSection, VideoDemoSection } from '@/components/marketing'
