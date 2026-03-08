@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Zap, Plus, Loader2, RefreshCw, AlertCircle } from 'lucide-react'
+import { Plus, Loader2, RefreshCw, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import { SiteLifecycleCard } from '@/components/spinupfy/SiteLifecycleCard'
@@ -78,9 +78,7 @@ export default function SpinupfyDashboard() {
       <header className="border-b border-gray-800/60 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/spinupfy" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
+            <img src="/spinupfy-icon.svg" alt="Spinupfy" className="w-8 h-8" />
             <span className="font-bold">Spinupfy</span>
           </Link>
           <span className="text-gray-600">/</span>
@@ -89,7 +87,7 @@ export default function SpinupfyDashboard() {
 
         <Link
           href="/spinupfy/create"
-          className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-xl text-sm font-medium transition-colors"
+          className="flex items-center gap-1.5 px-4 py-2 bg-spinupfy-700 hover:bg-spinupfy-600 rounded-xl text-sm font-medium transition-colors"
         >
           <Plus className="w-4 h-4" />
           New Site
@@ -151,7 +149,7 @@ export default function SpinupfyDashboard() {
                 onClick={() => setStatusFilter(opt.key)}
                 className={`text-sm px-3 py-1.5 rounded-xl border transition-colors ${
                   statusFilter === opt.key
-                    ? 'bg-blue-600 border-blue-500 text-white'
+                    ? 'bg-spinupfy-700 border-spinupfy-600 text-white'
                     : 'bg-gray-800/50 border-gray-700 text-gray-400 hover:text-white'
                 }`}
               >
@@ -171,12 +169,12 @@ export default function SpinupfyDashboard() {
         {/* Content */}
         {loading ? (
           <div className="flex items-center justify-center py-24">
-            <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+            <Loader2 className="w-8 h-8 text-spinupfy-600 animate-spin" />
           </div>
         ) : error ? (
           <div className="text-center py-16">
             <p className="text-red-400 mb-4">{error}</p>
-            <button onClick={fetchSites} className="text-sm text-blue-400 hover:text-blue-300">
+            <button onClick={fetchSites} className="text-sm text-spinupfy-400 hover:text-spinupfy-300">
               Try again
             </button>
           </div>
@@ -187,14 +185,14 @@ export default function SpinupfyDashboard() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-24"
           >
-            <div className="text-6xl mb-6">⚡</div>
+            <img src="/spinupfy-icon.svg" alt="" className="w-16 h-16 mx-auto mb-6 opacity-60" />
             <h2 className="text-2xl font-black mb-3">No sites yet</h2>
             <p className="text-gray-400 mb-8 max-w-md mx-auto">
               Create your first temporary site — an event flyer, real estate listing, flash sale, and more. Live in 60 seconds.
             </p>
             <Link
               href="/spinupfy/create"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-spinupfy-700 hover:bg-spinupfy-600 rounded-xl font-medium transition-colors"
             >
               <Plus className="w-4 h-4" />
               Create your first site

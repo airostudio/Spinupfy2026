@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Zap, TrendingDown, Clock, Shield, ChevronDown } from 'lucide-react'
+import { TrendingDown, Clock, Shield, ChevronDown } from 'lucide-react'
 import type { SpinupfyTemplateType } from '@/lib/spinupfy-pricing'
 import type { PricingBreakdown } from '@/lib/spinupfy-pricing'
 
@@ -15,8 +15,8 @@ interface PricingCalculatorProps {
 
 const TIER_BADGE: Record<string, { label: string; color: string }> = {
   daily:    { label: 'Daily Rate',   color: 'bg-gray-700 text-gray-300' },
-  weekly:   { label: '1-Week Deal',  color: 'bg-blue-800 text-blue-200' },
-  biweekly: { label: '2-Week Deal',  color: 'bg-indigo-800 text-indigo-200' },
+  weekly:   { label: '1-Week Deal',  color: 'bg-spinupfy-800 text-spinupfy-200' },
+  biweekly: { label: '2-Week Deal',  color: 'bg-spinupfy-700 text-spinupfy-100' },
   monthly:  { label: 'Best Value',   color: 'bg-green-800 text-green-200' },
   custom:   { label: 'Custom',       color: 'bg-gray-700 text-gray-300' },
 }
@@ -81,7 +81,7 @@ export function PricingCalculator({ templateType, startDate, endDate, onPricingR
           exit={{ opacity: 0 }}
           className="rounded-2xl border border-gray-700/60 bg-gray-800/30 p-6 flex items-center justify-center gap-3"
         >
-          <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-4 h-4 border-2 border-spinupfy-600 border-t-transparent rounded-full animate-spin" />
           <span className="text-sm text-gray-400">Calculating your price...</span>
         </motion.div>
       ) : pricing ? (
@@ -89,10 +89,10 @@ export function PricingCalculator({ templateType, startDate, endDate, onPricingR
           key="pricing"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl border border-blue-500/30 bg-blue-950/20 overflow-hidden"
+          className="rounded-2xl border border-spinupfy-700/30 bg-spinupfy-950/20 overflow-hidden"
         >
           {/* Header */}
-          <div className="p-5 border-b border-blue-500/20">
+          <div className="p-5 border-b border-spinupfy-700/20">
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1">
@@ -126,15 +126,15 @@ export function PricingCalculator({ templateType, startDate, endDate, onPricingR
           {/* What's included */}
           <div className="p-5 space-y-2.5">
             <div className="flex items-start gap-2.5 text-sm text-gray-300">
-              <Zap className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <img src="/spinupfy-icon.svg" alt="" className="w-4 h-4 mt-0.5 flex-shrink-0" />
               <span>AI builds your site in under 60 seconds</span>
             </div>
             <div className="flex items-start gap-2.5 text-sm text-gray-300">
-              <Shield className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <Shield className="w-4 h-4 text-spinupfy-400 mt-0.5 flex-shrink-0" />
               <span>Free hosting on spinupfy.io subdomain for {pricing.label}</span>
             </div>
             <div className="flex items-start gap-2.5 text-sm text-gray-300">
-              <Clock className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <Clock className="w-4 h-4 text-spinupfy-400 mt-0.5 flex-shrink-0" />
               <span>Email reminders before expiry · easy to extend</span>
             </div>
           </div>
@@ -156,7 +156,7 @@ export function PricingCalculator({ templateType, startDate, endDate, onPricingR
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden"
               >
-                <div className="px-5 pb-5 border-t border-blue-500/20 pt-4 space-y-2 text-sm">
+                <div className="px-5 pb-5 border-t border-spinupfy-700/20 pt-4 space-y-2 text-sm">
                   <div className="flex justify-between text-gray-400">
                     <span>Base price ({pricing.days} days × {formatPrice(pricing.dailyRate)})</span>
                     <span>{formatPrice(pricing.basePrice)}</span>

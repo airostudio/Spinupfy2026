@@ -106,10 +106,10 @@ export function DateRangePicker({
   const dayClasses: Record<string, string> = {
     empty:      '',
     disabled:   'text-gray-600 cursor-not-allowed',
-    available:  'text-gray-300 hover:bg-blue-500/20 hover:text-white cursor-pointer rounded-lg',
-    start:      'bg-blue-500 text-white font-bold rounded-l-lg cursor-pointer',
-    end:        'bg-blue-500 text-white font-bold rounded-r-lg cursor-pointer',
-    'in-range': 'bg-blue-500/20 text-blue-300 cursor-pointer',
+    available:  'text-gray-300 hover:bg-spinupfy-700/20 hover:text-white cursor-pointer rounded-lg',
+    start:      'bg-spinupfy-700 text-white font-bold rounded-l-lg cursor-pointer',
+    end:        'bg-spinupfy-700 text-white font-bold rounded-r-lg cursor-pointer',
+    'in-range': 'bg-spinupfy-700/20 text-spinupfy-300 cursor-pointer',
   }
 
   return (
@@ -120,7 +120,7 @@ export function DateRangePicker({
           onClick={() => setSelecting('start')}
           className={`flex-1 text-left px-4 py-3 rounded-xl border-2 transition-all ${
             selecting === 'start'
-              ? 'border-blue-500 bg-blue-950/40'
+              ? 'border-spinupfy-700 bg-spinupfy-950/40'
               : 'border-gray-700 bg-gray-900/40 hover:border-gray-500'
           }`}
         >
@@ -136,7 +136,7 @@ export function DateRangePicker({
           onClick={() => setSelecting('end')}
           className={`flex-1 text-left px-4 py-3 rounded-xl border-2 transition-all ${
             selecting === 'end'
-              ? 'border-blue-500 bg-blue-950/40'
+              ? 'border-spinupfy-700 bg-spinupfy-950/40'
               : 'border-gray-700 bg-gray-900/40 hover:border-gray-500'
           }`}
         >

@@ -21,7 +21,7 @@ export function TemplateCard({ template, selected, onSelect, compact }: Template
         relative w-full text-left rounded-2xl border-2 transition-all duration-200 cursor-pointer
         ${compact ? 'p-3' : 'p-5'}
         ${selected
-          ? 'border-blue-500 bg-blue-950/40 shadow-lg shadow-blue-500/20'
+          ? 'border-spinupfy-700 bg-spinupfy-950/40 shadow-lg shadow-spinupfy-700/20'
           : 'border-gray-700/60 bg-gray-800/40 hover:border-gray-500'
         }
       `}
@@ -31,7 +31,7 @@ export function TemplateCard({ template, selected, onSelect, compact }: Template
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="absolute top-3 right-3 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center"
+          className="absolute top-3 right-3 w-6 h-6 bg-spinupfy-700 rounded-full flex items-center justify-center"
         >
           <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
         </motion.div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Zap, Loader2, RefreshCw } from 'lucide-react'
+import { ArrowLeft, Loader2, RefreshCw } from 'lucide-react'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
@@ -68,7 +68,7 @@ export default function ExtendSitePage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+        <Loader2 className="w-8 h-8 text-spinupfy-600 animate-spin" />
       </div>
     )
   }
@@ -84,9 +84,7 @@ export default function ExtendSitePage() {
           <ArrowLeft className="w-4 h-4 text-gray-400" />
         </Link>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
-            <Zap className="w-3.5 h-3.5 text-white" />
-          </div>
+          <img src="/spinupfy-icon.svg" alt="Spinupfy" className="w-6 h-6" />
           <span className="font-bold text-sm">Extend Site</span>
         </div>
       </header>
@@ -124,7 +122,7 @@ export default function ExtendSitePage() {
                         onClick={() => setNewEndDate(newEnd)}
                         className={`text-xs px-3 py-1.5 rounded-xl border transition-colors ${
                           newEndDate && Math.round((newEndDate.getTime() - currentEnd.getTime()) / (1000 * 60 * 60 * 24)) === days
-                            ? 'bg-green-700 border-green-500 text-white'
+                            ? 'bg-spinupfy-700 border-spinupfy-600 text-white'
                             : 'bg-gray-700 border-gray-600 text-gray-400 hover:text-white'
                         }`}
                       >
@@ -140,7 +138,7 @@ export default function ExtendSitePage() {
                   min={currentEndMin.toISOString().split('T')[0]}
                   value={newEndDate ? newEndDate.toISOString().split('T')[0] : ''}
                   onChange={e => setNewEndDate(e.target.value ? new Date(e.target.value + 'T00:00:00') : null)}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-blue-500 text-sm"
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-spinupfy-700 text-sm"
                 />
 
                 {newEndDate && (
@@ -166,7 +164,7 @@ export default function ExtendSitePage() {
             <button
               onClick={handleExtend}
               disabled={!newEndDate || !pricing || submitting}
-              className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 disabled:opacity-50 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all"
+              className="w-full py-4 bg-gradient-to-r from-spinupfy-700 to-spinupfy-500 hover:from-spinupfy-600 hover:to-spinupfy-400 disabled:opacity-50 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all"
             >
               {submitting ? (
                 <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</>

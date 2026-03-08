@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, ArrowLeft, ArrowRight, Zap, Check, Loader2, User, Mail, Phone } from 'lucide-react'
+import { Sparkles, ArrowLeft, ArrowRight, Check, Loader2, User, Mail, Phone } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { createClient } from '@/lib/supabase'
 import { SPINUPFY_TEMPLATES, SPINUPFY_CATEGORIES, getTemplatesByCategory, matchTemplateToPrompt, getTemplate } from '@/lib/config/spinupfy-templates'
@@ -60,7 +60,6 @@ function SpinupfyCreateWizardInner() {
       setContactEmail(session.user.email || '')
       setAuthLoading(false)
 
-      // Pre-select from URL params
       const templateId = searchParams.get('templateId')
       const prompt = searchParams.get('prompt')
 
@@ -151,8 +150,6 @@ function SpinupfyCreateWizardInner() {
       if (!res.ok) throw new Error(data.error || 'Failed to create site')
 
       toast.success('Site created! Redirecting to editor...')
-
-      // Redirect to the AI editor to build the site content
       router.push(`/editor/${data.site.id}?spinupfy=true&template=${selectedTemplate.id}`)
     } catch (err: any) {
       toast.error(err.message || 'Something went wrong')
@@ -163,7 +160,7 @@ function SpinupfyCreateWizardInner() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+        <Loader2 className="w-8 h-8 text-spinupfy-600 animate-spin" />
       </div>
     )
   }
@@ -188,7 +185,7 @@ function SpinupfyCreateWizardInner() {
                 <div className={`
                   flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold transition-all
                   ${i < currentStepIndex ? 'bg-green-500 text-white' :
-                    i === currentStepIndex ? 'bg-blue-500 text-white' :
+                    i === currentStepIndex ? 'bg-spinupfy-700 text-white' :
                     'bg-gray-700 text-gray-500'}
                 `}>
                   {i < currentStepIndex ? <Check className="w-3 h-3" /> : i + 1}
@@ -205,9 +202,7 @@ function SpinupfyCreateWizardInner() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
-            <Zap className="w-3.5 h-3.5 text-white" />
-          </div>
+          <img src="/spinupfy-icon.svg" alt="Spinupfy" className="w-6 h-6" />
           <span className="font-bold text-sm">Spinupfy</span>
         </div>
       </header>
@@ -236,7 +231,7 @@ function SpinupfyCreateWizardInner() {
                   value={promptInput}
                   onChange={e => handlePromptInput(e.target.value)}
                   placeholder="e.g. garage sale, open house, flash sale, wedding RSVP..."
-                  className="w-full pl-12 pr-4 py-4 bg-gray-800 border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                  className="w-full pl-12 pr-4 py-4 bg-gray-800 border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700"
                 />
               </div>
 
@@ -244,7 +239,7 @@ function SpinupfyCreateWizardInner() {
               {aiSuggestions.length > 0 && (
                 <div className="mb-6">
                   <div className="text-xs text-gray-500 mb-3 flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-blue-400" /> AI suggestions
+                    <Sparkles className="w-3 h-3 text-spinupfy-500" /> AI suggestions
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {aiSuggestions.map(t => (
@@ -270,7 +265,7 @@ function SpinupfyCreateWizardInner() {
                       onClick={() => setActiveCategory(cat)}
                       className={`text-xs px-3 py-1.5 rounded-xl border transition-colors ${
                         activeCategory === cat
-                          ? 'bg-blue-600 border-blue-500 text-white'
+                          ? 'bg-spinupfy-700 border-spinupfy-600 text-white'
                           : 'bg-gray-800 border-gray-700 text-gray-400 hover:text-white'
                       }`}
                     >
@@ -295,7 +290,7 @@ function SpinupfyCreateWizardInner() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 p-4 bg-blue-950/40 border border-blue-500/30 rounded-2xl flex items-center gap-4"
+                  className="mt-6 p-4 bg-spinupfy-950/40 border border-spinupfy-700/30 rounded-2xl flex items-center gap-4"
                 >
                   <span className="text-3xl">{selectedTemplate.emoji}</span>
                   <div className="flex-1">
@@ -330,7 +325,7 @@ function SpinupfyCreateWizardInner() {
                     value={siteName}
                     onChange={e => setSiteName(e.target.value)}
                     placeholder={selectedTemplate?.wizardDefaults.headline || 'My Amazing Event'}
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700"
                   />
                 </div>
 
@@ -343,7 +338,7 @@ function SpinupfyCreateWizardInner() {
                     onChange={e => setSiteDescription(e.target.value)}
                     rows={3}
                     placeholder={selectedTemplate?.wizardDefaults.subheadline || 'Tell us more about what this is for...'}
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 resize-none"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700 resize-none"
                   />
                   <p className="text-xs text-gray-500 mt-1">The more detail you give, the better AI can customise your site.</p>
                 </div>
@@ -359,7 +354,7 @@ function SpinupfyCreateWizardInner() {
                       value={contactName}
                       onChange={e => setContactName(e.target.value)}
                       placeholder="Your name"
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 text-sm"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700 text-sm"
                     />
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
@@ -368,7 +363,7 @@ function SpinupfyCreateWizardInner() {
                         value={contactEmail}
                         onChange={e => setContactEmail(e.target.value)}
                         placeholder="your@email.com"
-                        className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 text-sm"
+                        className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700 text-sm"
                       />
                     </div>
                     <div className="relative">
@@ -377,7 +372,7 @@ function SpinupfyCreateWizardInner() {
                         value={contactPhone}
                         onChange={e => setContactPhone(e.target.value)}
                         placeholder="Phone (optional)"
-                        className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 text-sm"
+                        className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700 text-sm"
                       />
                     </div>
                   </div>
@@ -500,8 +495,8 @@ function SpinupfyCreateWizardInner() {
                 </div>
 
                 {/* Lifecycle explanation */}
-                <div className="bg-blue-950/20 border border-blue-500/20 rounded-2xl p-4 text-sm text-gray-400 space-y-2">
-                  <p className="font-medium text-blue-300">What happens next:</p>
+                <div className="bg-spinupfy-950/20 border border-spinupfy-700/20 rounded-2xl p-4 text-sm text-gray-400 space-y-2">
+                  <p className="font-medium text-spinupfy-300">What happens next:</p>
                   <ol className="list-decimal list-inside space-y-1 text-xs">
                     <li>AI generates your site and opens it in the editor</li>
                     <li>Customize as you like, then publish</li>
@@ -514,12 +509,12 @@ function SpinupfyCreateWizardInner() {
                 <button
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 disabled:opacity-50 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all"
+                  className="w-full py-4 bg-gradient-to-r from-spinupfy-700 to-spinupfy-500 hover:from-spinupfy-600 hover:to-spinupfy-400 disabled:opacity-50 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all"
                 >
                   {submitting ? (
                     <><Loader2 className="w-5 h-5 animate-spin" /> Building your site...</>
                   ) : (
-                    <><Zap className="w-5 h-5" /> Build My Site — ${pricing?.totalPrice.toFixed(2)}</>
+                    <><img src="/spinupfy-icon.svg" alt="" className="w-5 h-5" /> Build My Site — ${pricing?.totalPrice.toFixed(2)}</>
                   )}
                 </button>
               </div>
@@ -533,7 +528,7 @@ function SpinupfyCreateWizardInner() {
             <button
               onClick={advanceStep}
               disabled={!canAdvance()}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl font-medium transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-spinupfy-700 hover:bg-spinupfy-600 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl font-medium transition-colors"
             >
               Continue <ArrowRight className="w-4 h-4" />
             </button>
@@ -548,7 +543,7 @@ export default function SpinupfyCreatePage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+        <Loader2 className="w-8 h-8 text-spinupfy-600 animate-spin" />
       </div>
     }>
       <SpinupfyCreateWizardInner />

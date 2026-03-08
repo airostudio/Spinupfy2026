@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Clock, Zap, PauseCircle, Trash2, ExternalLink, RefreshCw } from 'lucide-react'
+import { Clock, PauseCircle, Trash2, ExternalLink, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
 import { getTemplate } from '@/lib/config/spinupfy-templates'
 
@@ -58,7 +58,7 @@ const STATUS_CONFIG = {
     label: 'Live',
     dot: 'bg-green-400 animate-pulse',
     badge: 'bg-green-900/40 text-green-300 border-green-700',
-    icon: Zap,
+    icon: () => <img src="/spinupfy-icon.svg" className="w-3 h-3" alt="" />,
   },
   suspended: {
     label: 'Suspended',
@@ -175,7 +175,7 @@ export function SiteLifecycleCard({ site, onExtend }: SiteLifecycleCardProps) {
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+              className="flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-lg bg-spinupfy-700 hover:bg-spinupfy-600 text-white transition-colors"
             >
               <ExternalLink className="w-3 h-3" />
               View Live

@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Zap, Sparkles, Clock, Shield, ArrowRight, ChevronDown } from 'lucide-react'
+import { Sparkles, Clock, Shield, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { SPINUPFY_CATEGORIES, SPINUPFY_TEMPLATES, getTemplatesByCategory } from '@/lib/config/spinupfy-templates'
 import { TemplateCard } from '@/components/spinupfy/TemplateCard'
@@ -36,7 +36,6 @@ export default function SpinupfyLandingPage() {
       const res = await fetch(`/api/spinupfy/create?prompt=${encodeURIComponent(value)}`)
       const data = await res.json()
       if (data.suggestions) {
-        // Map ids back to full templates
         const matched = data.suggestions.map((s: { id: string }) =>
           SPINUPFY_TEMPLATES.find(t => t.id === s.id)
         ).filter(Boolean)
@@ -75,7 +74,7 @@ export default function SpinupfyLandingPage() {
       step: '02',
       title: 'Customize in the editor',
       description: 'Your AI-generated site opens in our live editor. Tweak colors, text, images, and layout until it\'s exactly right. No code needed.',
-      icon: Zap,
+      icon: () => <img src="/spinupfy-icon.svg" className="w-5 h-5" alt="" />,
     },
     {
       step: '03',
@@ -96,9 +95,7 @@ export default function SpinupfyLandingPage() {
       {/* Nav */}
       <nav className="border-b border-gray-800/60 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
-            <Zap className="w-4 h-4 text-white" />
-          </div>
+          <img src="/spinupfy-logo.svg" alt="Spinupfy" className="h-8 w-auto" />
           <span className="font-bold text-lg">Spinupfy</span>
         </div>
         <div className="flex items-center gap-4">
@@ -107,7 +104,7 @@ export default function SpinupfyLandingPage() {
           </Link>
           <Link
             href="/spinupfy/create"
-            className="text-sm font-medium px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-xl transition-colors"
+            className="text-sm font-medium px-4 py-2 bg-spinupfy-700 hover:bg-spinupfy-600 rounded-xl transition-colors"
           >
             Create Site
           </Link>
@@ -121,8 +118,8 @@ export default function SpinupfyLandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6">
-            <Zap className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-spinupfy-700/10 border border-spinupfy-700/20 text-spinupfy-400 mb-6">
+            <img src="/spinupfy-icon.svg" className="w-3 h-3" alt="" />
             AI builds your site in under 60 seconds
           </div>
 
@@ -136,7 +133,7 @@ export default function SpinupfyLandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-spinupfy-700 to-spinupfy-400"
                 >
                   {HERO_WORDS[heroWordIndex]}
                 </motion.span>
@@ -161,12 +158,12 @@ export default function SpinupfyLandingPage() {
                 value={prompt}
                 onChange={e => handlePromptChange(e.target.value)}
                 placeholder="I need a site for my garage sale this weekend..."
-                className="w-full pl-12 pr-36 py-4 bg-gray-800 border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 text-sm"
+                className="w-full pl-12 pr-36 py-4 bg-gray-800 border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-spinupfy-700 focus:ring-1 focus:ring-spinupfy-700/30 text-sm"
               />
               <button
                 type="submit"
                 disabled={!prompt.trim()}
-                className="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-sm font-medium flex items-center gap-1.5 transition-colors"
+                className="absolute right-2 top-2 bottom-2 px-4 bg-spinupfy-700 hover:bg-spinupfy-600 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-sm font-medium flex items-center gap-1.5 transition-colors"
               >
                 Build it <ArrowRight className="w-4 h-4" />
               </button>
@@ -248,7 +245,7 @@ export default function SpinupfyLandingPage() {
               onClick={() => setActiveCategory(cat)}
               className={`text-sm px-4 py-2 rounded-xl border transition-colors ${
                 activeCategory === cat
-                  ? 'bg-blue-600 border-blue-500 text-white'
+                  ? 'bg-spinupfy-700 border-spinupfy-600 text-white'
                   : 'bg-gray-800/50 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500'
               }`}
             >
@@ -298,12 +295,12 @@ export default function SpinupfyLandingPage() {
                   className="flex gap-5 p-6 rounded-2xl bg-gray-800/40 border border-gray-700/60"
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-blue-400" />
+                    <div className="w-12 h-12 rounded-xl bg-spinupfy-700/10 border border-spinupfy-700/20 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-spinupfy-400" />
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-blue-500 mb-1">Step {step.step}</div>
+                    <div className="text-xs font-bold text-spinupfy-500 mb-1">Step {step.step}</div>
                     <h3 className="font-bold text-white mb-2">{step.title}</h3>
                     <p className="text-sm text-gray-400 leading-relaxed">{step.description}</p>
                   </div>
@@ -329,9 +326,9 @@ export default function SpinupfyLandingPage() {
           </p>
           <Link
             href="/spinupfy/create"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-blue-500/20"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-spinupfy-700 to-spinupfy-500 hover:from-spinupfy-600 hover:to-spinupfy-400 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-spinupfy-700/20"
           >
-            <Zap className="w-5 h-5" />
+            <img src="/spinupfy-icon.svg" alt="" className="w-5 h-5" />
             Start for free
             <ArrowRight className="w-5 h-5" />
           </Link>

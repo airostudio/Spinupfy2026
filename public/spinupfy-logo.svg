@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Outer rounded rectangle (browser window shape) -->
+  <rect x="10" y="10" width="180" height="180" rx="32" ry="32" fill="#FAD8F0" stroke="#7C35B8" stroke-width="12"/>
+  <!-- Browser top bar -->
+  <rect x="10" y="10" width="180" height="52" rx="32" ry="32" fill="#FAD8F0" stroke="#7C35B8" stroke-width="12"/>
+  <!-- Cover bottom corners of top bar to make it flat-bottomed -->
+  <rect x="10" y="44" width="180" height="18" fill="#FAD8F0"/>
+  <line x1="10" y1="62" x2="190" y2="62" stroke="#7C35B8" stroke-width="12"/>
+  <!-- Three browser dots -->
+  <circle cx="48" cy="36" r="7" fill="#7C35B8"/>
+  <circle cx="72" cy="36" r="7" fill="#7C35B8"/>
+  <circle cx="96" cy="36" r="7" fill="#7C35B8"/>
+  <!-- Growth chart line (upward trending arrow) -->
+  <polyline points="40,148 78,118 108,130 152,82" stroke="#7C35B8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Arrow head -->
+  <polyline points="132,72 152,82 142,102" stroke="#7C35B8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
