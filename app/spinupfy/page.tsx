@@ -125,7 +125,7 @@ export default function SpinupfyLandingPage() {
 
           <h1 className="text-5xl md:text-6xl font-black leading-none mb-4">
             Spin up your{' '}
-            <span className="relative inline-block">
+            <span className="relative inline-block pb-[5px]">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={heroWordIndex}

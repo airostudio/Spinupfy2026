@@ -386,13 +386,37 @@ export async function POST(request: NextRequest) {
     const userId = user.id
 
     // Check user's tier, website limit, and role
-    const { data: userData, error: userError } = await supabase
+    // Auto-create the user row if it doesn't exist yet (new sign-ups via email/password
+    // only create an auth record; the users table row must be seeded on first use)
+    let { data: userData, error: userError } = await supabase
       .from('users')
       .select('plan, role, subscription_status, trial_ends_at')
       .eq('id', userId)
       .single()
 
-    if (userError || !userData) {
+    if ((userError || !userData) && userError?.code === 'PGRST116') {
+      // Row not found — create it with FREE plan defaults
+      const { data: newUser, error: insertError } = await supabase
+        .from('users')
+        .upsert({
+          id: userId,
+          email: user.email ?? '',
+          plan: 'FREE',
+          role: 'user',
+        })
+        .select('plan, role, subscription_status, trial_ends_at')
+        .single()
+
+      if (insertError || !newUser) {
+        console.error('Error creating user record:', insertError)
+        return NextResponse.json(
+          { error: 'Failed to initialise user information' },
+          { status: 500 }
+        )
+      }
+      userData = newUser
+      userError = null
+    } else if (userError || !userData) {
       console.error('Error fetching user data:', userError)
       return NextResponse.json(
         { error: 'Failed to fetch user information' },

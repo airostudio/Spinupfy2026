@@ -75,10 +75,10 @@ export default function CreatePage() {
 
   if (!mounted || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-blue-500 mx-auto mb-4" />
-          <p className="text-gray-400">Loading...</p>
+          <Loader2 className="w-12 h-12 animate-spin text-spinupfy-700 mx-auto mb-4" />
+          <p className="text-gray-500">Loading...</p>
         </div>
       </div>
     )
@@ -227,20 +227,20 @@ export default function CreatePage() {
   const selectedBusinessType = BUSINESS_TYPES.find(bt => bt.id === formData.websiteType)
 
   return (
-    <div className="min-h-screen px-6 py-12">
+    <div className="min-h-screen px-6 py-12 bg-white">
       {/* Header */}
       <div className="mx-auto max-w-6xl mb-8">
         <div className="flex items-center justify-between">
           <button
             onClick={() => router.push('/dashboard')}
-            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-500 hover:text-spinupfy-700 transition-colors rounded-lg hover:bg-spinupfy-50"
           >
             <Home className="w-4 h-4" />
             Dashboard
           </button>
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-500 hover:text-spinupfy-700 transition-colors rounded-lg hover:bg-spinupfy-50"
           >
             <LogOut className="w-4 h-4" />
             Logout
@@ -264,10 +264,10 @@ export default function CreatePage() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 px-4 py-2 mb-6"
+                  className="inline-flex items-center gap-2 rounded-full bg-spinupfy-50 border border-spinupfy-700/20 px-4 py-2 mb-6"
                 >
-                  <Sparkles className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm font-medium bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">
+                  <Sparkles className="w-4 h-4 text-spinupfy-700" />
+                  <span className="text-sm font-medium text-spinupfy-700">
                     AI-Powered Website Builder
                   </span>
                 </motion.div>
@@ -276,10 +276,10 @@ export default function CreatePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-5xl md:text-6xl font-bold mb-4"
+                  className="text-5xl md:text-6xl font-bold mb-4 text-gray-900"
                 >
                   Create Your{' '}
-                  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-pink-400 text-transparent bg-clip-text">
+                  <span className="bg-gradient-to-r from-spinupfy-700 to-spinupfy-500 text-transparent bg-clip-text">
                     Dream Website
                   </span>
                 </motion.h1>
@@ -287,7 +287,7 @@ export default function CreatePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-lg text-gray-400 max-w-2xl mx-auto"
+                  className="text-lg text-gray-500 max-w-2xl mx-auto"
                 >
                   Tell us about your business and our AI will generate a stunning, professional website in seconds
                 </motion.p>
@@ -299,11 +299,11 @@ export default function CreatePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
                 onSubmit={handleSubmit}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-3xl space-y-8"
+                className="bg-white border border-gray-100 shadow-lg shadow-spinupfy-700/5 p-8 md:p-10 rounded-3xl space-y-8"
               >
                 {/* Mode Selection */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-gray-200">
+                  <label className="block text-sm font-semibold mb-3 text-gray-700">
                     What would you like to do? *
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -312,15 +312,15 @@ export default function CreatePage() {
                       onClick={() => setFormData({ ...formData, mode: 'create', existingUrl: '' })}
                       className={`p-6 rounded-xl border-2 transition-all text-left ${
                         formData.mode === 'create'
-                          ? 'border-blue-500 bg-blue-500/10'
-                          : 'border-white/10 hover:border-white/20 bg-white/5'
+                          ? 'border-spinupfy-700 bg-spinupfy-50'
+                          : 'border-gray-200 hover:border-spinupfy-700/30 bg-white'
                       }`}
                     >
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                          <Sparkles className="w-5 h-5 text-blue-400" />
+                        <div className="w-10 h-10 rounded-lg bg-spinupfy-100 flex items-center justify-center">
+                          <Sparkles className="w-5 h-5 text-spinupfy-700" />
                         </div>
-                        <div className="font-semibold text-white">Create New Website</div>
+                        <div className="font-semibold text-gray-900">Create New Website</div>
                       </div>
                       <p className="text-sm text-gray-400">
                         Generate a brand new website from scratch with AI
@@ -332,15 +332,15 @@ export default function CreatePage() {
                       onClick={() => setFormData({ ...formData, mode: 'improve' })}
                       className={`p-6 rounded-xl border-2 transition-all text-left ${
                         formData.mode === 'improve'
-                          ? 'border-cyan-500 bg-cyan-500/10'
-                          : 'border-white/10 hover:border-white/20 bg-white/5'
+                          ? 'border-spinupfy-500 bg-spinupfy-50'
+                          : 'border-gray-200 hover:border-spinupfy-700/30 bg-white'
                       }`}
                     >
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-                          <Wand2 className="w-5 h-5 text-cyan-400" />
+                        <div className="w-10 h-10 rounded-lg bg-spinupfy-100 flex items-center justify-center">
+                          <Wand2 className="w-5 h-5 text-spinupfy-500" />
                         </div>
-                        <div className="font-semibold text-white">Improve Existing Website</div>
+                        <div className="font-semibold text-gray-900">Improve Existing Website</div>
                       </div>
                       <p className="text-sm text-gray-400">
                         Scan your current website and modernize it with AI
@@ -358,7 +358,7 @@ export default function CreatePage() {
                     className="space-y-6"
                   >
                     <div>
-                      <label className="block text-sm font-semibold mb-3 text-gray-200">
+                      <label className="block text-sm font-semibold mb-3 text-gray-700">
                         Your Website URL *
                       </label>
                       <input
@@ -369,17 +369,17 @@ export default function CreatePage() {
                         }
                         onBlur={handleUrlBlur}
                         placeholder="www.yourwebsite.com"
-                        className="w-full px-4 py-4 bg-black/20 rounded-xl border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-purple-500/20 focus:outline-none transition-all text-white placeholder:text-gray-500"
+                        className="w-full px-4 py-4 bg-black/20 rounded-xl border border-white/10 focus:border-spinupfy-700 focus:ring-2 focus:ring-spinupfy-700/15 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400"
                         required={formData.mode === 'improve'}
                       />
                       <p className="mt-2 text-xs text-gray-400">
-                        <span className="text-cyan-400">💡 Tip:</span> Enter your website URL (we&apos;ll automatically add https:// if needed)
+                        <span className="text-spinupfy-500">💡 Tip:</span> Enter your website URL (we&apos;ll automatically add https:// if needed)
                       </p>
                     </div>
 
                     {/* Full Reproduction Toggle */}
                     <div>
-                      <label className="block text-sm font-semibold mb-3 text-gray-200">
+                      <label className="block text-sm font-semibold mb-3 text-gray-700">
                         Reproduction Mode
                       </label>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -388,17 +388,17 @@ export default function CreatePage() {
                           onClick={() => setFormData({ ...formData, fullReproduction: true })}
                           className={`p-5 rounded-xl border-2 transition-all text-left ${
                             formData.fullReproduction
-                              ? 'border-cyan-500 bg-cyan-500/10'
-                              : 'border-white/10 hover:border-white/20 bg-white/5'
+                              ? 'border-spinupfy-500 bg-spinupfy-50'
+                              : 'border-gray-200 hover:border-spinupfy-700/30 bg-white'
                           }`}
                         >
                           <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-                              <LayoutTemplate className="w-5 h-5 text-cyan-400" />
+                            <div className="w-10 h-10 rounded-lg bg-spinupfy-100 flex items-center justify-center">
+                              <LayoutTemplate className="w-5 h-5 text-spinupfy-500" />
                             </div>
                             <div>
-                              <div className="font-semibold text-white">Full Reproduction</div>
-                              <div className="text-xs text-cyan-400 font-medium">Recommended</div>
+                              <div className="font-semibold text-gray-900">Full Reproduction</div>
+                              <div className="text-xs text-spinupfy-500 font-medium">Recommended</div>
                             </div>
                           </div>
                           <p className="text-sm text-gray-400">
@@ -406,16 +406,16 @@ export default function CreatePage() {
                           </p>
                           <ul className="mt-3 space-y-1">
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-cyan-400" /> All pages reproduced
+                              <Check className="w-3 h-3 text-spinupfy-500" /> All pages reproduced
                             </li>
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-cyan-400" /> Original colors & fonts preserved
+                              <Check className="w-3 h-3 text-spinupfy-500" /> Original colors & fonts preserved
                             </li>
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-cyan-400" /> Images kept intact
+                              <Check className="w-3 h-3 text-spinupfy-500" /> Images kept intact
                             </li>
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-cyan-400" /> Menu structure preserved
+                              <Check className="w-3 h-3 text-spinupfy-500" /> Menu structure preserved
                             </li>
                           </ul>
                         </button>
@@ -425,17 +425,17 @@ export default function CreatePage() {
                           onClick={() => setFormData({ ...formData, fullReproduction: false })}
                           className={`p-5 rounded-xl border-2 transition-all text-left ${
                             !formData.fullReproduction
-                              ? 'border-blue-500 bg-blue-500/10'
-                              : 'border-white/10 hover:border-white/20 bg-white/5'
+                              ? 'border-spinupfy-700 bg-spinupfy-50'
+                              : 'border-gray-200 hover:border-spinupfy-700/30 bg-white'
                           }`}
                         >
                           <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                              <Zap className="w-5 h-5 text-blue-400" />
+                            <div className="w-10 h-10 rounded-lg bg-spinupfy-100 flex items-center justify-center">
+                              <Zap className="w-5 h-5 text-spinupfy-700" />
                             </div>
                             <div>
-                              <div className="font-semibold text-white">Quick Improvement</div>
-                              <div className="text-xs text-blue-400 font-medium">Faster</div>
+                              <div className="font-semibold text-gray-900">Quick Improvement</div>
+                              <div className="text-xs text-spinupfy-700 font-medium">Faster</div>
                             </div>
                           </div>
                           <p className="text-sm text-gray-400">
@@ -443,13 +443,13 @@ export default function CreatePage() {
                           </p>
                           <ul className="mt-3 space-y-1">
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-blue-400" /> Homepage only
+                              <Check className="w-3 h-3 text-spinupfy-700" /> Homepage only
                             </li>
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-blue-400" /> Faster processing
+                              <Check className="w-3 h-3 text-spinupfy-700" /> Faster processing
                             </li>
                             <li className="text-xs text-gray-500 flex items-center gap-2">
-                              <Check className="w-3 h-3 text-blue-400" /> AI-generated images
+                              <Check className="w-3 h-3 text-spinupfy-700" /> AI-generated images
                             </li>
                           </ul>
                         </button>
@@ -460,7 +460,7 @@ export default function CreatePage() {
 
                 {/* Business Name */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-gray-200">
+                  <label className="block text-sm font-semibold mb-3 text-gray-700">
                     Business Name {formData.mode === 'create' ? '*' : '(optional)'}
                   </label>
                   <input
@@ -474,18 +474,18 @@ export default function CreatePage() {
                         ? 'Leave empty to auto-detect from your website'
                         : 'e.g., Sunrise Bakery'
                     }
-                    className="w-full px-4 py-4 bg-black/20 rounded-xl border border-white/10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all text-white placeholder:text-gray-500"
+                    className="w-full px-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-spinupfy-700 focus:ring-2 focus:ring-spinupfy-700/15 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400"
                     required={formData.mode === 'create'}
                   />
                 </div>
 
                 {/* Business Type - Optional with Auto-Detection */}
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-200">
+                  <label className="block text-sm font-semibold mb-2 text-gray-700">
                     Business Type (Optional)
                   </label>
                   <p className="text-xs text-gray-400 mb-3">
-                    <span className="text-blue-400">✨ AI Auto-Detection:</span> Leave empty and we&apos;ll automatically detect your business type from your description
+                    <span className="text-spinupfy-700">✨ AI Auto-Detection:</span> Leave empty and we&apos;ll automatically detect your business type from your description
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
                     <button
@@ -493,8 +493,8 @@ export default function CreatePage() {
                       onClick={() => setFormData({ ...formData, websiteType: '' })}
                       className={`p-4 rounded-xl border-2 transition-all text-left ${
                         formData.websiteType === ''
-                          ? 'border-blue-500 bg-blue-500/10'
-                          : 'border-white/10 hover:border-white/20 bg-white/5'
+                          ? 'border-spinupfy-700 bg-spinupfy-50'
+                          : 'border-gray-200 hover:border-spinupfy-700/30 bg-white'
                       }`}
                     >
                       <div className="text-2xl mb-2">🤖</div>
@@ -507,8 +507,8 @@ export default function CreatePage() {
                         onClick={() => setFormData({ ...formData, websiteType: type.id })}
                         className={`p-4 rounded-xl border-2 transition-all text-left ${
                           formData.websiteType === type.id
-                            ? 'border-blue-500 bg-blue-500/10'
-                            : 'border-white/10 hover:border-white/20 bg-white/5'
+                            ? 'border-spinupfy-700 bg-spinupfy-50'
+                            : 'border-gray-200 hover:border-spinupfy-700/30 bg-white'
                         }`}
                       >
                         <div className="text-2xl mb-2">{type.emoji}</div>
@@ -521,7 +521,7 @@ export default function CreatePage() {
                     onChange={(e) =>
                       setFormData({ ...formData, websiteType: e.target.value })
                     }
-                    className="w-full px-4 py-4 bg-black/20 rounded-xl border border-white/10 focus:border-blue-500 focus:outline-none transition-all text-white"
+                    className="w-full px-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-spinupfy-700 focus:outline-none transition-all text-gray-900"
                   >
                     <option value="">🤖 Auto-Detect from Description</option>
                     {BUSINESS_TYPES.map((type) => (
@@ -535,12 +535,12 @@ export default function CreatePage() {
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      className="mt-4 p-4 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-xl border border-blue-500/20"
+                      className="mt-4 p-4 bg-spinupfy-50 rounded-xl border border-spinupfy-700/20"
                     >
                       <div className="flex items-start gap-3">
                         <span className="text-3xl">🤖</span>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-white mb-1">AI Auto-Detection Enabled</h4>
+                          <h4 className="font-semibold text-gray-900 mb-1">AI Auto-Detection Enabled</h4>
                           <p className="text-sm text-gray-400">
                             Our AI will analyze your business description and automatically determine the best business category,
                             design style, and layout for your website. Just describe what you do!
@@ -554,7 +554,7 @@ export default function CreatePage() {
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      className="mt-4 p-4 bg-black/20 rounded-xl border border-white/10"
+                      className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200"
                     >
                       <div className="flex items-start gap-3">
                         <span className="text-3xl">{selectedBusinessType.emoji}</span>
@@ -591,7 +591,7 @@ export default function CreatePage() {
 
                 {/* Description */}
                 <div>
-                  <label className="block text-sm font-semibold mb-3 text-gray-200">
+                  <label className="block text-sm font-semibold mb-3 text-gray-700">
                     Business Description {formData.mode === 'create' ? '*' : '(optional)'}
                   </label>
                   <textarea
@@ -617,7 +617,7 @@ export default function CreatePage() {
                 {/* Optional Fields */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold mb-3 text-gray-200">
+                    <label className="block text-sm font-semibold mb-3 text-gray-700">
                       Target Audience (optional)
                     </label>
                     <input
@@ -627,12 +627,12 @@ export default function CreatePage() {
                         setFormData({ ...formData, targetAudience: e.target.value })
                       }
                       placeholder="e.g., Families, Young professionals"
-                      className="w-full px-4 py-4 bg-black/20 rounded-xl border border-white/10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all text-white placeholder:text-gray-500"
+                      className="w-full px-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-spinupfy-700 focus:ring-2 focus:ring-spinupfy-700/15 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold mb-3 text-gray-200">
+                    <label className="block text-sm font-semibold mb-3 text-gray-700">
                       Tone
                     </label>
                     <select
@@ -640,7 +640,7 @@ export default function CreatePage() {
                       onChange={(e) =>
                         setFormData({ ...formData, tone: e.target.value as any })
                       }
-                      className="w-full px-4 py-4 bg-black/20 rounded-xl border border-white/10 focus:border-blue-500 focus:outline-none transition-all text-white"
+                      className="w-full px-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-spinupfy-700 focus:outline-none transition-all text-gray-900"
                     >
                       <option value="professional">Professional</option>
                       <option value="friendly">Friendly</option>
@@ -656,7 +656,7 @@ export default function CreatePage() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 rounded-xl font-bold text-lg transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-3"
+                  className="w-full px-8 py-5 bg-spinupfy-gradient hover:opacity-90 rounded-xl font-bold text-lg text-white transition-all shadow-lg shadow-spinupfy-700/30 hover:shadow-spinupfy-700/50 flex items-center justify-center gap-3"
                 >
                   <Wand2 className="w-5 h-5" />
                   Generate My Website
@@ -691,7 +691,7 @@ export default function CreatePage() {
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-20"
             >
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-3xl max-w-2xl mx-auto">
+              <div className="bg-white border border-gray-100 shadow-xl shadow-spinupfy-700/5 p-12 rounded-3xl max-w-2xl mx-auto">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -701,8 +701,8 @@ export default function CreatePage() {
                   <Check className="w-10 h-10 text-white" />
                 </motion.div>
 
-                <h2 className="text-3xl font-bold mb-4">Website Generated!</h2>
-                <p className="text-gray-400 mb-8">
+                <h2 className="text-3xl font-bold mb-4 text-gray-900">Website Generated!</h2>
+                <p className="text-gray-500 mb-8">
                   Your website has been created successfully
                 </p>
               </div>
@@ -716,7 +716,7 @@ export default function CreatePage() {
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-20"
             >
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-3xl max-w-2xl mx-auto">
+              <div className="bg-white border border-gray-100 shadow-xl shadow-spinupfy-700/5 p-12 rounded-3xl max-w-2xl mx-auto">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1, rotate: 360 }}
@@ -724,13 +724,13 @@ export default function CreatePage() {
                     scale: { type: 'spring', stiffness: 200, damping: 15 },
                     rotate: { duration: 2, repeat: Infinity, ease: 'linear' }
                   }}
-                  className="w-20 h-20 mx-auto mb-8 bg-blue-500 rounded-full flex items-center justify-center"
+                  className="w-20 h-20 mx-auto mb-8 bg-spinupfy-gradient rounded-full flex items-center justify-center"
                 >
                   <Loader2 className="w-10 h-10 text-white" />
                 </motion.div>
 
-                <h2 className="text-3xl font-bold mb-4">Loading Editor</h2>
-                <p className="text-gray-400 mb-8">
+                <h2 className="text-3xl font-bold mb-4 text-gray-900">Loading Editor</h2>
+                <p className="text-gray-500 mb-8">
                   Preparing your website in the editor...
                 </p>
 
@@ -739,7 +739,7 @@ export default function CreatePage() {
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
-                      className="w-2 h-2 bg-blue-500 rounded-full"
+                      className="w-2 h-2 bg-spinupfy-700 rounded-full"
                       animate={{
                         scale: [1, 1.3, 1],
                         opacity: [0.5, 1, 0.5]

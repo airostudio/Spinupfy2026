@@ -8,7 +8,7 @@ import { Check } from 'lucide-react'
 const showcaseWebsites = [
   {
     id: 'apex-realty',
-    name: 'The Apex',
+    name: 'Real Estate',
     businessType: 'Luxury Real Estate',
     description: 'A 4,200 sq ft crown jewel on the 55th floor. Unobstructed 360° skyline views, private terrace, and bespoke finishes throughout.',
     colors: { primary: '#0d0d0d', accent: '#c9a84c' },
@@ -17,14 +17,14 @@ const showcaseWebsites = [
     features: ['Private Viewing Booking', 'Property Gallery', 'Agent Contact']
   },
   {
-    id: 'prestige-estates',
-    name: 'PRESTIGE',
-    businessType: 'Luxury Real Estate',
-    description: 'Exclusive luxury estates from $6M to $10M in the world\'s most prestigious locations',
-    colors: { primary: '#1a1a2e', accent: '#ffd700' },
+    id: 'conferences',
+    name: 'Conferences',
+    businessType: 'Event & Conference',
+    description: 'Professional conference and event management with seamless registration, speaker profiles, and schedule management.',
+    colors: { primary: '#1a1a2e', accent: '#6c63ff' },
     stats: { buildTime: '3 minutes', sections: 6 },
-    screenshot: '/samples/prestige-real-estate.png',
-    features: ['Property Gallery', 'Virtual Tours', 'Private Consultation']
+    screenshot: '/samples/lifestyle.png',
+    features: ['Event Registration', 'Speaker Profiles', 'Schedule & Agenda']
   },
   {
     id: 'artisan-bakery',
