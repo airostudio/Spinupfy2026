@@ -401,110 +401,200 @@ function buildGeminiPrompt(params: GeminiImageParams): string {
            This should be a SPECIFIC image for THIS business, NOT a generic stock photo.
            Make it WORLD-CLASS quality - magazine-worthy, professional, on-brand, and HIGHLY RELEVANT.`,
 
-    FEATURES: `Create a ${businessType} related image showing features or benefits.
-               ${description || `Professional setting showcasing ${businessType} services`}.
+    FEATURES: `Create a magazine-quality editorial photograph for the FEATURES section of ${businessName}'s website.
+
+               BUSINESS CONTEXT:
+               Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+               Description: ${description || `Professional ${businessType} business`}
+               Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+               Target Audience: ${targetAudience || 'general audience'}
+
+               VISUAL OBJECTIVE:
+               Show a real-world close-up or action scene that communicates a KEY BENEFIT or feature of this ${businessType} business.
+               Composition: tight, editorial, ${pricePoint === 'luxury' ? 'luxury minimal with dramatic lighting' : 'clean, bright, modern aesthetic'}.
+               The image must instantly tell a micro-story about ONE specific value this business delivers.
+               Lighting: ${pricePoint === 'luxury' ? 'dramatic studio-quality natural window light' : 'warm natural light, inviting, bright'}.
+               Depth of field: shallow, subject sharp, background softly blurred (bokeh).
+               Color grade: ${designMood === 'playful' ? 'vibrant, saturated, energetic' : designMood === 'elegant' ? 'muted, sophisticated, editorial' : 'clean, professional, vivid'}.
 
                🚨 STRICTLY PROHIBITED:
                ❌ NO photography equipment (cameras, lights, tripods, studio gear)
                ❌ NO brand logos (Apple, Microsoft, Google, etc.)
                ❌ NO cartoons, illustrations, or digital art
-               ❌ NO text or watermarks
+               ❌ NO text, watermarks, or UI overlays
+               ❌ NO generic stock-photo feel — must look editorial and specific
 
                REQUIREMENTS:
-               ✓ ULTRA-REALISTIC, photorealistic photography only
-               ✓ Show the ACTUAL service/product in use
-               ✓ Natural, real-world environment
+               ✓ ULTRA-REALISTIC photorealistic photography — indistinguishable from real
+               ✓ Show the ACTUAL benefit/feature in use, not abstract concepts
                ✓ ${qualityTerms}
-               ✓ Clean composition, focused on the subject`,
+               ✓ Aspect ratio 4:3, clean editorial composition`,
 
-    ABOUT: `Create a professional image representing ${businessName}, a ${businessType} company.
-            ${description || `Show professional team or workplace environment for ${businessType}`}.
+    ABOUT: `Create a warm, authentic editorial photograph for the ABOUT section of ${businessName}'s website.
+
+            BUSINESS CONTEXT:
+            Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+            Description: ${description || `Professional ${businessType} business`}
+            Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+            Target Audience: ${targetAudience || 'general audience'}
+            Unique Value: ${uniqueValue || `${businessType} expertise`}
+
+            VISUAL OBJECTIVE:
+            Capture the HUMAN SIDE of this ${businessType} business. Show real people at work in an authentic, behind-the-scenes moment.
+            The image should build TRUST and make visitors feel they know the people behind ${businessName || 'the business'}.
+            Environment: the actual ${businessType} workplace — NOT a generic office.
+            Tone: ${pricePoint === 'luxury' ? 'sophisticated, curated, aspirational' : designMood === 'playful' ? 'friendly, warm, approachable' : 'genuine, professional, trustworthy'}.
+            Lighting: natural light from windows, warm and inviting.
+            Composition: wide enough to show the environment, with human subject as anchor.
 
             🚨 STRICTLY PROHIBITED:
             ❌ NO photography equipment (cameras, lights, studio gear)
-            ❌ NO brand logos (Apple, etc.) or branded products
+            ❌ NO brand logos or branded products
             ❌ NO cartoons or illustrations
             ❌ NO text or logos
+            ❌ NO posed stock-photo stiffness — must feel real and candid
 
             REQUIREMENTS:
-            ✓ ULTRA-REALISTIC, photorealistic photography
+            ✓ ULTRA-REALISTIC photorealistic photography
             ✓ ${qualityTerms}
-            ✓ Authentic, trustworthy, human-centered
-            ✓ Real workplace or team environment`,
+            ✓ Authentic, human-centered, trustworthy atmosphere
+            ✓ Shows the real environment where ${businessName || 'the business'} operates`,
 
-    TEAM: `Create a professional headshot or team photo for ${businessType} business.
-           ${description || `Professional business person in ${businessType} industry`}.
+    TEAM: `Create a professional portrait photograph for a team member at ${businessName}, a ${businessType} business.
+
+           BUSINESS CONTEXT:
+           Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+           Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+
+           VISUAL OBJECTIVE:
+           A confident, authentic professional headshot. The subject should look approachable AND authoritative.
+           Background: ${pricePoint === 'luxury' ? 'elegant, slightly blurred interior of a high-end workspace' : 'clean, softly blurred neutral background with a hint of the workplace environment'}.
+           Lighting: ${pricePoint === 'luxury' ? 'dramatic rembrandt-style window light, sophisticated' : 'soft natural window light, flattering, professional'}.
+           Expression: genuine smile or confident composure — NOT a stiff corporate pose.
+           Attire: appropriate for ${businessType} at the ${pricePoint || 'professional'} price point.
+           Depth of field: shallow, face sharp, background smooth bokeh.
 
            🚨 STRICTLY PROHIBITED:
-           ❌ NO photography equipment visible in shot
+           ❌ NO photography equipment visible
            ❌ NO brand logos or branded items
            ❌ NO cartoons or illustrations
            ❌ NO text
+           ❌ NO overly retouched or artificial-looking skin
 
            REQUIREMENTS:
-           ✓ ULTRA-REALISTIC, photorealistic photography
+           ✓ ULTRA-REALISTIC photorealistic photography
            ✓ ${qualityTerms}
-           ✓ Professional attire, neutral background
-           ✓ Confident, authentic expression`,
+           ✓ Portrait orientation (3:4), face fills upper 2/3 of frame
+           ✓ Confident, authentic, human expression`,
 
-    SERVICES: `Create an image showcasing ${businessType} services.
-               ${description || `Visual representation of ${businessType} service delivery`}.
+    SERVICES: `Create an editorial action photograph for the SERVICES section of ${businessName}'s website.
+
+               BUSINESS CONTEXT:
+               Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+               Description: ${description || `Professional ${businessType} services`}
+               Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+               Target Audience: ${targetAudience || 'general audience'}
+
+               VISUAL OBJECTIVE:
+               Show the SERVICE BEING DELIVERED — a decisive, skilled moment that communicates expertise.
+               This must make the target audience (${targetAudience || 'potential clients'}) immediately understand WHAT ${businessName || 'the business'} does AND why they are good at it.
+               Angle: slightly elevated or eye-level action shot.
+               Lighting: ${pricePoint === 'luxury' ? 'premium dramatic lighting, polished' : 'bright, natural, professional'}.
+               Focus: the KEY ACTION or result, not peripheral details.
+               Composition: rule-of-thirds, subject has space to "breathe".
 
                🚨 STRICTLY PROHIBITED:
                ❌ NO photography equipment
                ❌ NO brand logos (Apple, etc.)
                ❌ NO cartoons, illustrations, or digital art
                ❌ NO text or logos
+               ❌ NO showing the TOOLS instead of the SERVICE — show RESULTS and DELIVERY
 
                REQUIREMENTS:
-               ✓ ULTRA-REALISTIC, photorealistic photography
-               ✓ Show the SERVICE being delivered, not the tools
+               ✓ ULTRA-REALISTIC photorealistic photography
+               ✓ Show the service being DELIVERED, not the tools used to create it
                ✓ ${qualityTerms}
-               ✓ Clear, professional, service-focused composition`,
+               ✓ Square 1:1 format, editorial, clean composition`,
 
-    CONTACT: `Create a welcoming image for ${businessType} contact section.
-              ${description || `Inviting scene related to ${businessType} communication`}.
+    CONTACT: `Create a welcoming, warm editorial photograph for the CONTACT section of ${businessName}'s website.
+
+              BUSINESS CONTEXT:
+              Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+              Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+
+              VISUAL OBJECTIVE:
+              Convey ACCESSIBILITY and WARMTH — make visitors feel comfortable reaching out.
+              Show a genuine moment of connection: a professional smiling while on a call, a welcoming reception desk, or a friendly face-to-face consultation.
+              Environment: the actual ${businessType} business space, inviting and well-lit.
+              Color palette: ${designMood === 'playful' ? 'warm, cheerful tones' : 'calm, professional, trustworthy tones'}.
+              Lighting: bright, natural, welcoming.
 
               🚨 STRICTLY PROHIBITED:
               ❌ NO photography equipment
               ❌ NO brand logos
               ❌ NO cartoons or illustrations
               ❌ NO text
+              ❌ NO overly staged or forced smiles
 
               REQUIREMENTS:
-              ✓ ULTRA-REALISTIC, photorealistic photography
+              ✓ ULTRA-REALISTIC photorealistic photography
               ✓ ${qualityTerms}
-              ✓ Approachable, friendly, professional setting`,
+              ✓ Wide landscape composition, approachable and inviting`,
 
-    PORTFOLIO: `Create a portfolio showcase image for ${businessName}.
-                ${description || `Example of ${businessType} work or project`}.
+    PORTFOLIO: `Create a stunning showcase photograph for the PORTFOLIO section of ${businessName}'s website.
+
+                BUSINESS CONTEXT:
+                Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+                Description: ${description || `${businessType} work and projects`}
+                Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+
+                VISUAL OBJECTIVE:
+                Show the FINISHED RESULT of ${businessName || "the business"}'s best work — the OUTCOME that clients pay for.
+                This image must make visitors think "I want THAT result for myself."
+                Presentation: ${pricePoint === 'luxury' ? 'museum-quality, flawless, aspirational' : 'clean, professional, impressive'}.
+                Lighting: showcase lighting — the result looks its absolute best.
+                Composition: the finished work is the hero, presented without clutter.
 
                 🚨 STRICTLY PROHIBITED:
-                ❌ NO photography equipment or studio gear
+                ❌ NO photography equipment or studio gear — NO "making of" content
                 ❌ NO brand logos (Apple, etc.)
-                ❌ NO cartoons, illustrations
+                ❌ NO cartoons or illustrations
                 ❌ NO text or logos
+                ❌ NO showing the PROCESS — ONLY the finished result
 
                 REQUIREMENTS:
-                ✓ ULTRA-REALISTIC, photorealistic photography
+                ✓ ULTRA-REALISTIC photorealistic photography
                 ✓ Show the FINISHED WORK, not the creation process
                 ✓ ${qualityTerms}
-                ✓ Showcase-quality presentation`,
+                ✓ 4:3 format, showcase-quality presentation`,
 
-    TESTIMONIAL: `Create a background image for customer testimonials section.
-                  ${description || `Happy customers or positive ${businessType} experience`}.
+    TESTIMONIAL: `Create a warm, authentic editorial photograph for the TESTIMONIALS section of ${businessName}'s website.
+
+                  BUSINESS CONTEXT:
+                  Business: ${businessName || 'Professional Business'} | Type: ${businessType}
+                  Price Point: ${pricePoint || 'professional'} | Mood: ${designMood || 'professional'}
+                  Target Audience: ${targetAudience || 'general audience'}
+
+                  VISUAL OBJECTIVE:
+                  Show a HAPPY, SATISFIED customer who has benefited from ${businessName || "the business"}'s service.
+                  The image must radiate genuine satisfaction and positive emotion.
+                  This is the moment AFTER the service — the customer experiencing the result or feeling the impact.
+                  Subject: a person who represents ${targetAudience || 'the target audience'}, genuine smile, natural expression.
+                  Environment: real-world context related to ${businessType}.
+                  Lighting: warm, flattering, positive energy.
 
                   🚨 STRICTLY PROHIBITED:
                   ❌ NO photography equipment
                   ❌ NO brand logos
                   ❌ NO cartoons or illustrations
                   ❌ NO text
+                  ❌ NO forced or fake-looking happiness
 
                   REQUIREMENTS:
-                  ✓ ULTRA-REALISTIC, photorealistic photography
+                  ✓ ULTRA-REALISTIC photorealistic photography
                   ✓ ${qualityTerms}
-                  ✓ Positive, trustworthy atmosphere
-                  ✓ Real people, authentic emotions`,
+                  ✓ Positive, authentic, trust-building atmosphere
+                  ✓ Real people, genuine emotions`,
   }
 
   // Get template or use generic
