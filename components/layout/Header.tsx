@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { createClient } from '@/lib/supabase'
 import { UserMenu } from './UserMenu'
 
-export function Header() {
+export function Header({ light }: { light?: boolean } = {}) {
   const router = useRouter()
   const supabase = createClient()
   const [user, setUser] = useState<any>(null)
@@ -71,7 +71,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b ${light ? 'bg-white/95 border-gray-200' : 'bg-gray-900/95 border-gray-800'}`}>
       <nav className="max-w-7xl mx-auto px-6 py-[2px]">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -80,8 +80,8 @@ export function Header() {
             className="flex items-center hover:opacity-90 transition-opacity py-[2px]"
           >
             <Image
-              src="/webese-logo.png"
-              alt="Webese - Your AI Website Buddy"
+              src="/icon.png"
+              alt="Spinupfy — AI Website Builder"
               width={200}
               height={55}
               className="h-11 md:h-12 w-auto object-contain"
@@ -98,13 +98,13 @@ export function Header() {
                   <>
                     <Link
                       href="/dashboard"
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className={`transition-colors ${light ? 'text-gray-600 hover:text-gray-900' : 'text-gray-300 hover:text-white'}`}
                     >
                       Dashboard
                     </Link>
                     <Link
                       href="/dashboard/content-writer"
-                      className="text-purple-400 hover:text-purple-300 transition-colors font-medium"
+                      className="transition-colors font-medium" style={{ color: '#7C35B8' }}
                     >
                       AI Writer
                     </Link>
@@ -123,25 +123,25 @@ export function Header() {
                   <>
                     <Link
                       href="#features"
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className={`transition-colors ${light ? 'text-gray-600 hover:text-gray-900' : 'text-gray-300 hover:text-white'}`}
                     >
                       Features
                     </Link>
                     <Link
                       href="/pricing"
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className={`transition-colors ${light ? 'text-gray-600 hover:text-gray-900' : 'text-gray-300 hover:text-white'}`}
                     >
                       Pricing
                     </Link>
                     <Link
                       href="/login"
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className={`transition-colors ${light ? 'text-gray-600 hover:text-gray-900' : 'text-gray-300 hover:text-white'}`}
                     >
                       Login
                     </Link>
                     <Link
                       href="/login"
-                      className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 rounded-lg font-semibold text-white transition-colors"
+                      className="px-6 py-2.5 rounded-lg font-semibold text-white transition-all duration-300" style={{ background: 'linear-gradient(135deg, #7C35B8 0%, #B845A2 100%)' }}
                     >
                       Get Started
                     </Link>
@@ -154,7 +154,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+            className={`md:hidden p-2 transition-colors ${light ? 'text-gray-500 hover:text-gray-900' : 'text-gray-400 hover:text-white'}`}
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -166,7 +166,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t border-gray-800">
+          <div className={`md:hidden mt-4 pt-4 border-t ${light ? 'border-gray-200' : 'border-gray-800'}`}>
             <div className="flex flex-col gap-4">
               {!loading && (
                 <>
